@@ -12,6 +12,8 @@ import CryptoSwift
 
 class BonViewController: UIViewController, UITextFieldDelegate {
     
+    // MARK: Properties
+    
     @IBOutlet weak var usernameTextField: UITextField! {
         didSet {
             usernameTextField.delegate = self
@@ -23,6 +25,8 @@ class BonViewController: UIViewController, UITextFieldDelegate {
             passwordTextField.delegate = self
         }
     }
+    
+    // MARK: Global variable
     
     var uid = String();
     var username = String() {
@@ -36,6 +40,7 @@ class BonViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // MARK: View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +96,7 @@ class BonViewController: UIViewController, UITextFieldDelegate {
                 case .Success(let string):
                     print("Success with JSON: \(string)")
                     
+                    print(response.debugDescription)
                     if let uid = Int(string) {
                         print(uid)
                         
@@ -171,24 +177,37 @@ class BonViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    // FIXME: It doesn't work well
+    
     func forceLogout() {
         username = usernameTextField.text!
         password = passwordTextField.text!
         
+        // "582023371"
+        // "691918"
         let parameters = [
             "username": username,
             "password": password,
-            "drop": "0",
-            "type": "1",
-            "n": "1"
+//            "drop": "0",
+//            "type": "1",
+//            "n": "1"
         ]
+        print(parameters)
+        
+//        let headers = [
+//            "Content-Type": "application/x-www-form-urlencoded",
+////            "Accept": "application/vnd.lichess.v1+json",
+////            "X-Requested-With": "XMLHttpRequest",
+//            "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
+//            //"user-agent": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)"
+//        ]
         
         Alamofire.request(.POST, BIT.URL.ForceLogoutURL, parameters: parameters)
             .responseString { response in
                 switch response.result {
                 case .Success(let string):
                     print("Force logout success with string: \(string)")
-                    
+                    print(response.debugDescription)
                     if let value = response.result.value {
                         print("Force logout: \(value)")
                     }
@@ -196,6 +215,74 @@ class BonViewController: UIViewController, UITextFieldDelegate {
                 case .Failure(let error):
                     print("Request failed with error: \(error)")
                 }
+        }
+    }
+    
+    // MARK: Get user balance, show it on another view
+    func getBalance() {
+        
+//        {
+//            "buy_mbytes" = "0.00";
+//            "buy_minutes" = "<null>";
+//            charge = "10.00";
+//            client = WEB;
+//            fid = 11668;
+//            "flux_long" = "9.00G";
+//            "flux_long1" = B;
+//            "flux_long6" = B;
+//            "free_in_bytes" = 0B;
+//            "free_out_bytes" = 0B;
+//            ipv = 4;
+//            limit = 0;
+//            "month_fee" = "10.00";
+//            "remain_fee" = "1.53";
+//            "remain_flux" = "2,530.89M";
+//            "remain_timelong" = "<null>";
+//            speed = 0;
+//            "time_long" = 0;
+//            "time_long1" = 0;
+//            "time_long6" = 0;
+//            uid = 44064;
+//            "user_balance" = "11.53";
+//            "user_in_bytes" = 0B;
+//            "user_ip" = "10.194.25.196";
+//            "user_login_name" = 1120141755;
+//            "user_login_time" = "2016-04-18 09:00:47";
+//            "user_out_bytes" = 0B;
+//        }
+    
+        Alamofire.request(.GET, BIT.URL.UserOnlineURL)
+            .responseJSON { response in
+                switch response.result {
+                case .Success(let Json):
+                    print("Get balance success with string: \(Json)")
+                    
+//                    if let value = response.result.value {
+//                        print("Force logout: \(value)")
+//                    }
+                    
+                case .Failure(let error):
+                    print("Request failed with error: \(error)")
+                }
+        }
+    }
+    
+    func getLoginState() {
+        
+        Alamofire.request(.POST, BIT.URL.RadUserInfoURL)
+            .responseString { response in
+                switch response.result {
+                case .Success(let Json):
+                    print("Get Login State success with string: \(Json)")
+                    
+//                    if let value = response.result.value {
+//                        print("Login State: \(value)")
+//                    }
+                    
+                case .Failure(let error):
+                    print("Request failed with error: \(error)")
+                }
+
         }
     }
     
@@ -211,6 +298,8 @@ class BonViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func forceLogoutButtonTapped(sender: AnyObject) {
         saveUserInput()
+        //getBalance()
+        //getLoginState()
         forceLogout()
     }
     

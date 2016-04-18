@@ -15,6 +15,9 @@ class BIT {
         static let KeepLiveURL = "http://10.0.0.55/cgi-bin/keeplive"
         static let DoLogoutURL = "http://10.0.0.55/cgi-bin/do_logout"
         static let ForceLogoutURL = "http://10.0.0.55/cgi-bin/force_logout"
+        static let UserOnlineURL = "http://10.0.0.55/user_online.php"
+        static let RadUserInfoURL = "http://10.0.0.55/cgi-bin/rad_user_info"
+        static let SrunPortalURL = "http://10.0.0.55/cgi-bin/srun_portal"
     }
     
     static let LoginStatus: [String: String] = {
