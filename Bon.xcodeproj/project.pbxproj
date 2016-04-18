@@ -8,28 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		831CCAC31CC36AD100DEF69E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CCAC21CC36AD100DEF69E /* AppDelegate.swift */; };
-		831CCAC51CC36AD100DEF69E /* BonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CCAC41CC36AD100DEF69E /* BonViewController.swift */; };
-		831CCAC81CC36AD100DEF69E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831CCAC61CC36AD100DEF69E /* Main.storyboard */; };
+		831CCAC51CC36AD100DEF69E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CCAC41CC36AD100DEF69E /* LoginViewController.swift */; };
 		831CCACA1CC36AD100DEF69E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 831CCAC91CC36AD100DEF69E /* Assets.xcassets */; };
 		831CCACD1CC36AD100DEF69E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831CCACB1CC36AD100DEF69E /* LaunchScreen.storyboard */; };
 		831CCAD61CC36E4200DEF69E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831CCAD41CC36E4200DEF69E /* Alamofire.framework */; };
 		831CCAD71CC36E4200DEF69E /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831CCAD51CC36E4200DEF69E /* CryptoSwift.framework */; };
 		831CCADB1CC36F0B00DEF69E /* BIT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CCADA1CC36F0B00DEF69E /* BIT.swift */; };
-		831CCADD1CC36F1400DEF69E /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CCADC1CC36F1400DEF69E /* Server.swift */; };
+		831CCADD1CC36F1400DEF69E /* BonService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CCADC1CC36F1400DEF69E /* BonService.swift */; };
+		8368215C1CC4F4F3004C43C1 /* BonAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368215B1CC4F4F3004C43C1 /* BonAlert.swift */; };
+		8368215E1CC4F5D7004C43C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8368215D1CC4F5D7004C43C1 /* Main.storyboard */; };
+		836821601CC4F731004C43C1 /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8368215F1CC4F731004C43C1 /* NewsFeedViewController.swift */; };
+		836821651CC502A3004C43C1 /* String+Bon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836821641CC502A3004C43C1 /* String+Bon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		831CCABF1CC36AD100DEF69E /* Bon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bon.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		831CCAC21CC36AD100DEF69E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		831CCAC41CC36AD100DEF69E /* BonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonViewController.swift; sourceTree = "<group>"; };
-		831CCAC71CC36AD100DEF69E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		831CCAC41CC36AD100DEF69E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		831CCAC91CC36AD100DEF69E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		831CCACC1CC36AD100DEF69E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		831CCACE1CC36AD100DEF69E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		831CCAD41CC36E4200DEF69E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		831CCAD51CC36E4200DEF69E /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
 		831CCADA1CC36F0B00DEF69E /* BIT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIT.swift; sourceTree = "<group>"; };
-		831CCADC1CC36F1400DEF69E /* Server.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		831CCADC1CC36F1400DEF69E /* BonService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonService.swift; sourceTree = "<group>"; };
+		8368215B1CC4F4F3004C43C1 /* BonAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonAlert.swift; sourceTree = "<group>"; };
+		8368215D1CC4F5D7004C43C1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8368215F1CC4F731004C43C1 /* NewsFeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
+		836821641CC502A3004C43C1 /* String+Bon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Bon.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,13 +71,13 @@
 			isa = PBXGroup;
 			children = (
 				831CCAC21CC36AD100DEF69E /* AppDelegate.swift */,
-				831CCAC41CC36AD100DEF69E /* BonViewController.swift */,
-				831CCADA1CC36F0B00DEF69E /* BIT.swift */,
-				831CCADC1CC36F1400DEF69E /* Server.swift */,
-				831CCAC61CC36AD100DEF69E /* Main.storyboard */,
+				836821581CC4F36E004C43C1 /* Helpers */,
+				836821661CC50AF5004C43C1 /* Configs */,
+				836821591CC4F376004C43C1 /* Services */,
+				836821631CC50277004C43C1 /* Extensions */,
+				8368215A1CC4F3C0004C43C1 /* ViewControllers */,
 				831CCAC91CC36AD100DEF69E /* Assets.xcassets */,
-				831CCACB1CC36AD100DEF69E /* LaunchScreen.storyboard */,
-				831CCACE1CC36AD100DEF69E /* Info.plist */,
+				836821611CC4F7B3004C43C1 /* Supporting Files */,
 				831CCAD91CC36EC800DEF69E /* Framework */,
 			);
 			path = Bon;
@@ -85,6 +91,65 @@
 			);
 			name = Framework;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		836821581CC4F36E004C43C1 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8368215B1CC4F4F3004C43C1 /* BonAlert.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		836821591CC4F376004C43C1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				831CCADA1CC36F0B00DEF69E /* BIT.swift */,
+				831CCADC1CC36F1400DEF69E /* BonService.swift */,
+			);
+			name = Services;
+			sourceTree = "<group>";
+		};
+		8368215A1CC4F3C0004C43C1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				831CCAC41CC36AD100DEF69E /* LoginViewController.swift */,
+				8368215F1CC4F731004C43C1 /* NewsFeedViewController.swift */,
+				836821621CC4F7CF004C43C1 /* Storyboard */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		836821611CC4F7B3004C43C1 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				831CCACE1CC36AD100DEF69E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		836821621CC4F7CF004C43C1 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				8368215D1CC4F5D7004C43C1 /* Main.storyboard */,
+				831CCACB1CC36AD100DEF69E /* LaunchScreen.storyboard */,
+			);
+			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		836821631CC50277004C43C1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				836821641CC502A3004C43C1 /* String+Bon.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		836821661CC50AF5004C43C1 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Configs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,9 +212,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8368215E1CC4F5D7004C43C1 /* Main.storyboard in Resources */,
 				831CCACD1CC36AD100DEF69E /* LaunchScreen.storyboard in Resources */,
 				831CCACA1CC36AD100DEF69E /* Assets.xcassets in Resources */,
-				831CCAC81CC36AD100DEF69E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,24 +243,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				831CCAC51CC36AD100DEF69E /* BonViewController.swift in Sources */,
+				831CCAC51CC36AD100DEF69E /* LoginViewController.swift in Sources */,
+				8368215C1CC4F4F3004C43C1 /* BonAlert.swift in Sources */,
 				831CCAC31CC36AD100DEF69E /* AppDelegate.swift in Sources */,
-				831CCADD1CC36F1400DEF69E /* Server.swift in Sources */,
+				836821651CC502A3004C43C1 /* String+Bon.swift in Sources */,
+				831CCADD1CC36F1400DEF69E /* BonService.swift in Sources */,
 				831CCADB1CC36F0B00DEF69E /* BIT.swift in Sources */,
+				836821601CC4F731004C43C1 /* NewsFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		831CCAC61CC36AD100DEF69E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				831CCAC71CC36AD100DEF69E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		831CCACB1CC36AD100DEF69E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
