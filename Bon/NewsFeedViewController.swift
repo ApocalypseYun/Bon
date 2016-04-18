@@ -12,62 +12,62 @@ import MessageUI
 class NewsFeedViewController: UIViewController {
 
     
-    @IBOutlet var mainFeedImage: UIImageView!
-    @IBOutlet var loadingView: UIActivityIndicatorView!
-   
-    @IBOutlet var scrollView: UIScrollView!
-    @IBOutlet var statusButton: UIButton!
-
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        configureNewsFeedMainImage()
-        
-        configureScrollView()
-
-        // Do any additional setup after loading the view.
-    }
-    
-    func configureNewsFeedMainImage() {
-      
-        mainFeedImage.alpha = CGFloat.min
-        loadingView.startAnimating()
-        
-        delay(3, closure: {
-            
-            self.mainFeedImage.alpha = CGFloat.max
-            self.loadingView.stopAnimating()
-            })
-        
-    }
-    
-    func configureScrollView() {
-        self.scrollView.contentSize = self.mainFeedImage.image!.size
-        scrollView.scrollEnabled = true
-    }
-
-    // Function to create a delay method that is easy to re-use
-    func delay(delay:Double, closure:()->()) {
-        dispatch_after(
-            dispatch_time(
-                DISPATCH_TIME_NOW,
-                Int64(delay * Double(NSEC_PER_SEC))
-            ),
-            dispatch_get_main_queue(), closure)
-    }
-
-
-    @IBAction func onComposeButton(sender: AnyObject) {
-        print("just pressed the button")
-        
-     
-        
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
+//    @IBOutlet var mainFeedImage: UIImageView!
+//    @IBOutlet var loadingView: UIActivityIndicatorView!
+//   
+//    @IBOutlet var scrollView: UIScrollView!
+//    @IBOutlet var statusButton: UIButton!
+//
+//    
+//    
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        
+//        configureNewsFeedMainImage()
+//        
+//        configureScrollView()
+//
+//        // Do any additional setup after loading the view.
+//    }
+//    
+//    func configureNewsFeedMainImage() {
+//      
+//        mainFeedImage.alpha = CGFloat.min
+//        loadingView.startAnimating()
+//        
+//        delay(3, closure: {
+//            
+//            self.mainFeedImage.alpha = CGFloat.max
+//            self.loadingView.stopAnimating()
+//            })
+//        
+//    }
+//    
+//    func configureScrollView() {
+//        self.scrollView.contentSize = self.mainFeedImage.image!.size
+//        scrollView.scrollEnabled = true
+//    }
+//
+//    // Function to create a delay method that is easy to re-use
+//    func delay(delay:Double, closure:()->()) {
+//        dispatch_after(
+//            dispatch_time(
+//                DISPATCH_TIME_NOW,
+//                Int64(delay * Double(NSEC_PER_SEC))
+//            ),
+//            dispatch_get_main_queue(), closure)
+//    }
+//
+//
+//    @IBAction func onComposeButton(sender: AnyObject) {
+//        //print("just pressed the button")
+//        
+//     
+//        
+//    }
+//    
+//    override func didReceiveMemoryWarning() {
+//        super.didReceiveMemoryWarning()
+//    }
 
 }

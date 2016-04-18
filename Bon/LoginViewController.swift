@@ -278,13 +278,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                     print("Keep Live: \(userInfo)")
                     
-                    let alertController = UIAlertController(title: "Login Success", message: "Congratulations! You are online now.", preferredStyle: .Alert)
-                    
-                    let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                    
-                    alertController.addAction(action)
-                    
-                    self.presentViewController(alertController, animated: true, completion: nil)
+//                    let alertController = UIAlertController(title: "Login Success", message: "Congratulations! You are online now.", preferredStyle: .Alert)
+//                    
+//                    let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
+//                    
+//                    alertController.addAction(action)
+//                    
+//                    self.presentViewController(alertController, animated: true, completion: nil)
                     
                 case .Failure(let error):
                     print("Request failed with error: \(error)")

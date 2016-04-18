@@ -78,18 +78,18 @@
 				8368215A1CC4F3C0004C43C1 /* ViewControllers */,
 				831CCAC91CC36AD100DEF69E /* Assets.xcassets */,
 				836821611CC4F7B3004C43C1 /* Supporting Files */,
-				831CCAD91CC36EC800DEF69E /* Framework */,
+				831CCAD91CC36EC800DEF69E /* Frameworks */,
 			);
 			path = Bon;
 			sourceTree = "<group>";
 		};
-		831CCAD91CC36EC800DEF69E /* Framework */ = {
+		831CCAD91CC36EC800DEF69E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				831CCAD41CC36E4200DEF69E /* Alamofire.framework */,
 				831CCAD51CC36E4200DEF69E /* CryptoSwift.framework */,
 			);
-			name = Framework;
+			name = Frameworks;
 			path = ..;
 			sourceTree = "<group>";
 		};

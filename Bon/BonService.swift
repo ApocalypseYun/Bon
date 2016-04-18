@@ -10,21 +10,14 @@ import Foundation
 import Alamofire
 
 class Server {
-    
-    let loginViewController = LoginViewController()
-    
-    var uid = String();
-    var username = String() {
-        didSet {
-            loginViewController.usernameTextField?.text? = username
-        }
-    }
-    var password = String() {
-        didSet {
-            loginViewController.passwordTextField?.text? = password
-        }
-    }
 
+    /**
+     *   login方式获取数据
+     *   url : 请求地址
+     *   params : 传入参数
+     *   success : 请求成功回调函数
+     *   fail : 请求失败回调函数
+     */
     
     func login() {
         

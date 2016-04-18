@@ -85,6 +85,7 @@
         <!--News View Controller-->
         <scene sceneID="6aE-Xu-fAT">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xf2-zi-Jdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController title="News View Controller" id="zqR-MI-fDf" customClass="NewsFeedViewController" customModule="Bon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3zl-tb-oTV"/>
@@ -94,60 +95,27 @@
                         <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="newsFeedHeaderImage" translatesAutoresizingMaskIntoConstraints="NO" id="zfV-5N-ek2">
-                                <rect key="frame" x="20" y="0.0" width="560" height="45"/>
-                            </imageView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fFo-DZ-5RO">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="fFo-DZ-5RO">
                                 <rect key="frame" x="290" y="258" width="20" height="20"/>
                                 <color key="color" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fue-KV-dCK">
-                                <rect key="frame" x="0.0" y="45" width="600" height="442"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mainFeedImage" translatesAutoresizingMaskIntoConstraints="NO" id="wp8-oy-e4g">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="517"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="517" id="Vlw-QO-K5e"/>
-                                        </constraints>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iks-Ki-Puy">
-                                        <rect key="frame" x="0.0" y="-44" width="201" height="45"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="201" id="4PT-yS-7ip"/>
-                                            <constraint firstAttribute="height" constant="45" id="jER-RB-zWi"/>
-                                        </constraints>
-                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="5" maxY="0.0"/>
-                                        <connections>
-                                            <action selector="onComposeButton:" destination="zqR-MI-fDf" eventType="touchUpInside" id="VwP-tC-TZX"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="wp8-oy-e4g" secondAttribute="bottom" constant="-75" id="Ceg-po-Y6F"/>
-                                    <constraint firstItem="iks-Ki-Puy" firstAttribute="leading" secondItem="Fue-KV-dCK" secondAttribute="leading" id="PPr-Fy-Q9Y"/>
-                                    <constraint firstItem="wp8-oy-e4g" firstAttribute="top" secondItem="Fue-KV-dCK" secondAttribute="top" id="VcG-wB-BTs"/>
-                                    <constraint firstAttribute="trailing" secondItem="wp8-oy-e4g" secondAttribute="trailing" id="a6D-fQ-7Io"/>
-                                    <constraint firstItem="wp8-oy-e4g" firstAttribute="centerX" secondItem="Fue-KV-dCK" secondAttribute="centerX" id="e5u-LP-unS"/>
-                                    <constraint firstItem="iks-Ki-Puy" firstAttribute="top" secondItem="Fue-KV-dCK" secondAttribute="top" constant="-44" id="hNK-24-7K4"/>
-                                    <constraint firstItem="iks-Ki-Puy" firstAttribute="leading" secondItem="wp8-oy-e4g" secondAttribute="leading" id="scU-Qi-xPM"/>
-                                </constraints>
-                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZ1-8S-j3S">
+                                <rect key="frame" x="277" y="248" width="46" height="30"/>
+                                <state key="normal" title="Return"/>
+                                <connections>
+                                    <segue destination="gad-sG-3XQ" kind="presentation" modalTransitionStyle="flipHorizontal" id="wNa-gL-WFe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fFo-DZ-5RO" firstAttribute="centerY" secondItem="nVZ-sz-HUO" secondAttribute="centerY" id="FDi-vE-YiE"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="zfV-5N-ek2" secondAttribute="trailing" id="Gso-uf-5A6"/>
-                            <constraint firstItem="zfV-5N-ek2" firstAttribute="centerX" secondItem="nVZ-sz-HUO" secondAttribute="centerX" id="NEJ-b4-fyb"/>
-                            <constraint firstItem="Fue-KV-dCK" firstAttribute="bottom" secondItem="pCz-xk-IIn" secondAttribute="top" id="NVD-Sf-OtP"/>
-                            <constraint firstItem="Fue-KV-dCK" firstAttribute="leading" secondItem="nVZ-sz-HUO" secondAttribute="leading" id="R6x-yD-w8r"/>
                             <constraint firstItem="fFo-DZ-5RO" firstAttribute="centerX" secondItem="nVZ-sz-HUO" secondAttribute="centerX" id="RME-YS-kuo"/>
-                            <constraint firstItem="Fue-KV-dCK" firstAttribute="top" secondItem="zfV-5N-ek2" secondAttribute="bottom" id="Vek-JT-OkT"/>
-                            <constraint firstItem="zfV-5N-ek2" firstAttribute="top" secondItem="3zl-tb-oTV" secondAttribute="bottom" id="kGe-et-nEM"/>
-                            <constraint firstItem="Fue-KV-dCK" firstAttribute="centerX" secondItem="zfV-5N-ek2" secondAttribute="centerX" id="oBa-iP-bCp"/>
-                            <constraint firstItem="zfV-5N-ek2" firstAttribute="leading" secondItem="nVZ-sz-HUO" secondAttribute="leadingMargin" id="uEH-Nk-2B1"/>
+                            <constraint firstItem="vZ1-8S-j3S" firstAttribute="centerX" secondItem="nVZ-sz-HUO" secondAttribute="centerX" id="b5S-Jp-jIA"/>
+                            <constraint firstItem="vZ1-8S-j3S" firstAttribute="centerY" secondItem="nVZ-sz-HUO" secondAttribute="centerY" id="vKm-S6-yKp"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="News Feed" id="n2o-aT-zO3">
+                    <navigationItem key="navigationItem" title="BITer" id="n2o-aT-zO3">
                         <barButtonItem key="leftBarButtonItem" style="done" id="Sp1-MR-Ltv">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="a9r-tG-ieo">
                                 <rect key="frame" x="20" y="9" width="29" height="25"/>
@@ -168,14 +136,7 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <outlet property="loadingView" destination="fFo-DZ-5RO" id="cyL-QA-nVk"/>
-                        <outlet property="mainFeedImage" destination="wp8-oy-e4g" id="Pi3-vA-hKm"/>
-                        <outlet property="scrollView" destination="Fue-KV-dCK" id="SAR-tK-Mxr"/>
-                        <outlet property="statusButton" destination="iks-Ki-Puy" id="h0w-LJ-Wta"/>
-                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xf2-zi-Jdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-949" y="1809"/>
         </scene>
@@ -493,7 +454,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="nKM-rQ-LT0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.26666666666666666" green="0.38431372549019605" blue="0.63137254901960782" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.49411764705882355" green="0.47450980392156861" blue="0.53725490196078429" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </textAttributes>
@@ -586,11 +547,9 @@
     </scenes>
     <resources>
         <image name="Bon" width="160" height="92"/>
-        <image name="mainFeedImage" width="320" height="415"/>
         <image name="messages" width="27" height="27"/>
         <image name="more" width="27" height="27"/>
         <image name="newsFeed" width="27" height="27"/>
-        <image name="newsFeedHeaderImage" width="320" height="45"/>
         <image name="notifications" width="22" height="22"/>
         <image name="personMenu" width="24" height="24"/>
         <image name="requests" width="22" height="16"/>
