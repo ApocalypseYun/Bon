@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Bon View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="BonViewController" customModule="Bon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,8 +16,61 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gPy-D0-x4v" userLabel="username">
+                                <rect key="frame" x="252" y="106" width="97" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="97" id="5bv-Q4-I9I"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iv9-7A-Oky" userLabel="password">
+                                <rect key="frame" x="252" y="174" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQx-Ep-TgS">
+                                <rect key="frame" x="281" y="258" width="38" height="30"/>
+                                <state key="normal" title="Login"/>
+                                <connections>
+                                    <action selector="loginButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iEs-BF-Z0A"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yVW-7R-3TV">
+                                <rect key="frame" x="276" y="302" width="48" height="30"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hss-nz-oOQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEh-Pk-OOo">
+                                <rect key="frame" x="257" y="358" width="87" height="30"/>
+                                <state key="normal" title="Force logout"/>
+                                <connections>
+                                    <action selector="forceLogoutButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6g2-39-BNp"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yVW-7R-3TV" firstAttribute="top" secondItem="PQx-Ep-TgS" secondAttribute="bottom" constant="14" id="179-gZ-d3N"/>
+                            <constraint firstItem="gPy-D0-x4v" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2aP-fZ-Nfl"/>
+                            <constraint firstItem="gPy-D0-x4v" firstAttribute="trailing" secondItem="iv9-7A-Oky" secondAttribute="trailing" id="3Sx-f6-F9u"/>
+                            <constraint firstItem="gPy-D0-x4v" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="86" id="9qu-ut-pot"/>
+                            <constraint firstItem="PQx-Ep-TgS" firstAttribute="centerX" secondItem="yVW-7R-3TV" secondAttribute="centerX" id="Aaq-ey-Hlb"/>
+                            <constraint firstItem="PQx-Ep-TgS" firstAttribute="top" secondItem="iv9-7A-Oky" secondAttribute="bottom" constant="54" id="Jpu-lr-34z"/>
+                            <constraint firstItem="iv9-7A-Oky" firstAttribute="top" secondItem="gPy-D0-x4v" secondAttribute="bottom" constant="38" id="TDD-Qz-kz4"/>
+                            <constraint firstItem="iv9-7A-Oky" firstAttribute="centerX" secondItem="PQx-Ep-TgS" secondAttribute="centerX" id="gSP-Bb-O3O"/>
+                            <constraint firstItem="dEh-Pk-OOo" firstAttribute="top" secondItem="yVW-7R-3TV" secondAttribute="bottom" constant="26" id="k71-Dk-fFn"/>
+                            <constraint firstItem="gPy-D0-x4v" firstAttribute="leading" secondItem="iv9-7A-Oky" secondAttribute="leading" id="sHL-Ub-4hi"/>
+                            <constraint firstItem="yVW-7R-3TV" firstAttribute="centerX" secondItem="dEh-Pk-OOo" secondAttribute="centerX" id="zzL-ch-dzF"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="iv9-7A-Oky" id="amC-sv-8jy"/>
+                        <outlet property="usernameTextField" destination="gPy-D0-x4v" id="HaG-h6-ySO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
