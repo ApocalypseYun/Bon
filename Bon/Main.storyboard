@@ -85,8 +85,7 @@
         <!--News View Controller-->
         <scene sceneID="6aE-Xu-fAT">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Xf2-zi-Jdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController title="News View Controller" id="zqR-MI-fDf" customClass="NewsFeedViewController" customModule="Bon" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="News View Controller" id="zqR-MI-fDf" customClass="UserInfoViewController" customModule="Bon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3zl-tb-oTV"/>
                         <viewControllerLayoutGuide type="bottom" id="pCz-xk-IIn"/>
@@ -99,21 +98,46 @@
                                 <rect key="frame" x="290" y="258" width="20" height="20"/>
                                 <color key="color" red="0.50196081399917603" green="0.50196081399917603" blue="0.50196081399917603" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZ1-8S-j3S">
-                                <rect key="frame" x="277" y="248" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vZ1-8S-j3S">
+                                <rect key="frame" x="277" y="410" width="46" height="30"/>
                                 <state key="normal" title="Return"/>
                                 <connections>
                                     <segue destination="gad-sG-3XQ" kind="presentation" modalTransitionStyle="flipHorizontal" id="wNa-gL-WFe"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kKI-Ob-sOo">
+                                <rect key="frame" x="175" y="143" width="250" height="250"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="DvG-5R-y4S"/>
+                                    <constraint firstAttribute="height" constant="250" id="GCf-fh-kAl"/>
+                                    <constraint firstAttribute="width" constant="250" id="N5k-p7-ai5"/>
+                                    <constraint firstAttribute="width" constant="242" id="YzQ-Aj-XsR"/>
+                                    <constraint firstAttribute="height" constant="250" id="wgj-fw-db2"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="DvG-5R-y4S"/>
+                                        <exclude reference="YzQ-Aj-XsR"/>
+                                        <exclude reference="wgj-fw-db2"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fFo-DZ-5RO" firstAttribute="centerY" secondItem="nVZ-sz-HUO" secondAttribute="centerY" id="FDi-vE-YiE"/>
+                            <constraint firstItem="kKI-Ob-sOo" firstAttribute="centerY" secondItem="nVZ-sz-HUO" secondAttribute="centerY" id="Kai-gJ-r3W"/>
+                            <constraint firstItem="kKI-Ob-sOo" firstAttribute="centerX" secondItem="nVZ-sz-HUO" secondAttribute="centerX" id="Pxv-pW-oMX"/>
                             <constraint firstItem="fFo-DZ-5RO" firstAttribute="centerX" secondItem="nVZ-sz-HUO" secondAttribute="centerX" id="RME-YS-kuo"/>
                             <constraint firstItem="vZ1-8S-j3S" firstAttribute="centerX" secondItem="nVZ-sz-HUO" secondAttribute="centerX" id="b5S-Jp-jIA"/>
-                            <constraint firstItem="vZ1-8S-j3S" firstAttribute="centerY" secondItem="nVZ-sz-HUO" secondAttribute="centerY" id="vKm-S6-yKp"/>
+                            <constraint firstItem="vZ1-8S-j3S" firstAttribute="top" secondItem="kKI-Ob-sOo" secondAttribute="bottom" constant="60" id="u3N-ij-6nl"/>
+                            <constraint firstItem="vZ1-8S-j3S" firstAttribute="centerY" secondItem="nVZ-sz-HUO" secondAttribute="centerY" constant="157" id="vKm-S6-yKp"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="u3N-ij-6nl"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="BITer" id="n2o-aT-zO3">
                         <barButtonItem key="leftBarButtonItem" style="done" id="Sp1-MR-Ltv">
@@ -136,7 +160,11 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="remainFluxImageView" destination="kKI-Ob-sOo" id="Vf9-FH-wRk"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xf2-zi-Jdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-949" y="1809"/>
         </scene>

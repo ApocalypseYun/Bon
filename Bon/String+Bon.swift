@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CryptoSwift
 
 extension String {
     var MD5: String {

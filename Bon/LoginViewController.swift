@@ -7,9 +7,6 @@
 //
 
 import UIKit
-import MessageUI
-import Alamofire
-import CryptoSwift
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -26,14 +23,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var logoutButtonTop: NSLayoutConstraint!
     @IBOutlet weak var loginContentViewCenterY: NSLayoutConstraint!
     
+    var uid: String = ""
+    var username: String = ""{
+        didSet {
+            usernameTextField?.text = username
+        }
+    }
+    var password: String = ""{
+        didSet {
+            passwordTextField?.text = password
+        }
+    }
+    
     // MARK: View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        username = initial("username")
-        password = initial("password")
-        uid = initial("uid")
+        username = BonUserDefaults.username
+        password = BonUserDefaults.password
+        uid = BonUserDefaults.uid
+        //username = initial("username")
+        //password = initial("password")
+        //uid = initial("uid")
         
         configureLoginInButton()
         configureTextFieldView()
@@ -78,16 +90,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
     }
     
-    // Function to create a delay method that is easy to re-use
-    func delay(delay:Double, closure:()->()) {
-        dispatch_after(
-            dispatch_time(
-                DISPATCH_TIME_NOW,
-                Int64(delay * Double(NSEC_PER_SEC))
-            ),
-            dispatch_get_main_queue(), closure)
-    }
-    
     // MARK: UITextFieldDelegate
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
@@ -111,6 +113,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+//        usernameTextField.resignFirstResponder()
+//        passwordTextField.resignFirstResponder()
+//    }
+    
     // MARK: Actions
     
     @IBAction func onUsernameTextField(sender: AnyObject) {
@@ -133,13 +140,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         saveUserInput()
         
-        delay(2.0, closure: {
+        delay(2.0) { 
             self.loadingView.stopAnimating()
             self.loginButton.selected = false
             
             self.login()
-            //self.userEmailAndPasswordCheck()
-        })
+            self.getBalance()
+        }
     }
     
     @IBAction func onLogoutButton(sender: AnyObject) {
@@ -148,13 +155,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         saveUserInput()
         
-        delay(2.0, closure: {
+        delay(2.0) {
             self.whiteActivityIndicator.stopAnimating()
             self.loginButton.selected = false
             
             self.logout()
-            //self.userEmailAndPasswordCheck()
-        })
+        }
         
     }
     
@@ -167,37 +173,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "LogIn" {
+        if segue.identifier == "Login" {
             
         }
         
-    }
-    
-    /*
-     // #pragma mark - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
-     // Get the new view controller using [segue destinationViewController].
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
-    var uid = String();
-    var username = String() {
-        didSet {
-            usernameTextField?.text? = username
-        }
-    }
-    var password = String() {
-        didSet {
-            passwordTextField?.text? = password
-        }
-    }
-    
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        usernameTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
     }
     
     func initial(key: String) -> String {
@@ -211,6 +190,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
+    // MARK: Network operation
     
     func login() {
         username = usernameTextField.text!
@@ -224,75 +204,57 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             "n": "100"
         ]
         
-        Alamofire.request(.POST, BIT.URL.DoLoginURL, parameters: parameters)
-            .responseString{ response in
-                switch response.result {
-                case .Success(let value):
-                    if Int(value) != nil {
-                        self.uid = value
-                        self.keepLive()
-                        self.performSegueWithIdentifier("Login", sender: self)
-                    } else {
-                        
-                        let alertController = UIAlertController(title: "Login Error", message: BIT.LoginStatus[value], preferredStyle: .Alert)
-                        
-                        let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                        
-                        alertController.addAction(action)
-                        
-                        self.presentViewController(alertController, animated: true, completion: nil)
-                    }
+        BonNetwork.login(parameters) { (value) in
+            if Int(value) != nil {
+                self.uid = value
+                print(self.uid)
+                
+                //let getUserInfoQueue = dispatch_queue_create("get_user_info_queue", nil)
+                
+                self.getUserInfo()
+//                dispatch_async(getUserInfoQueue, {
+//                    self.getUserInfo()
+//                    
+//                    dispatch_async(dispatch_get_main_queue(), { })
+//                })
+                
+                //self.keepLive()
+                self.performSegueWithIdentifier("Login", sender: self)
+            } else {
+                BonAlert.alert(title: "Login Error", message: BIT.LoginErrorMessage[value], dismissTitle: "OK", inViewController: self, withDismissAction: nil)
+            }
 
-                case .Failure(let error):
-                    print("Request failed with error: \(error)")
-                }
         }
-        
-        
     }
     
     func keepLive() {
         
         let parameters = [
-            "uid": self.uid
+            "uid": uid
         ]
         
-        Alamofire.request(.POST, BIT.URL.KeepLiveURL, parameters: parameters)
-            .responseString { response in
-                switch response.result {
-                case .Success(let value):
-                    
-                    let info = value.componentsSeparatedByString(",")
-                    
-                    let key = ["connectionTime", "inFlow", "outFlow", "usableFlow", "unknown1", "unknown2", "unknown3", "username"]
-                    
-                    let userInfo: [String: String] = {
-                        var userInfo = Dictionary<String, String>()
-                        for index in 0...7 {
-                            userInfo[key[index]] = info[index]
-                        }
-                        return userInfo
-                    }()
-                    
-                    self.saveUserInput()
-                    
-                    print("Keep Live: \(userInfo)")
-                    
-//                    let alertController = UIAlertController(title: "Login Success", message: "Congratulations! You are online now.", preferredStyle: .Alert)
-//                    
-//                    let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
-//                    
-//                    alertController.addAction(action)
-//                    
-//                    self.presentViewController(alertController, animated: true, completion: nil)
-                    
-                case .Failure(let error):
-                    print("Request failed with error: \(error)")
-                }
-                
+        BonNetwork.keepLive(parameters) { (value) in
+            let info = value.componentsSeparatedByString(",")
+            
+//            let key = ["connectionTime", "inFlux", "outFlux", "remainFlux", "unknown1", "unknown2", "unknown3", "username"]
+//            print(self.uid)
+//            let userInfo: [String: String] = {
+//                var userInfo = Dictionary<String, String>()
+//                for index in 0...7 {
+//                    userInfo[key[index]] = info[index]
+//                }
+//                return userInfo
+//            }()
+            let remainFlux = Double(info[3])!
+            print(remainFlux)
+            print(remainFlux/1024/1024/1024)
+            BonUserDefaults.remainFlux = remainFlux / 1024 / 1024 / 1024
+            self.saveUserInput()
+            
+            //print("Keep Live: \(userInfo)")
         }
-        
     }
+    
     
     
     func logout() {
@@ -300,31 +262,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let parameters = [
             "uid": uid
         ]
-        
-        Alamofire.request(.POST, BIT.URL.DoLogoutURL, parameters: parameters)
-            .responseString { response in
-                switch response.result {
-                case .Success(let value):
-                    
-                    print("Logout: \(value)")
-                    
-                    var alertController = UIAlertController()
-                    if value == "logout_ok" {
-                        alertController = UIAlertController(title: "Logout Success", message: "Aha! You are offline now.", preferredStyle: .Alert)
-                    } else {
-                        alertController = UIAlertController(title: "Logout Error", message: BIT.LogoutStatus[value], preferredStyle: .Alert)
-                    }
-                    
-                    let action = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                    alertController.addAction(action)
-                    self.presentViewController(alertController, animated: true, completion: nil)
-                    
-                case .Failure(let error):
-                    print("Request failed with error: \(error)")
-                }
+        print("logout: \(uid)")
+        BonNetwork.logout(parameters) { (value) in
+            print("Logout: \(value)")
+            
+            if value == "logout_ok" {
+                BonAlert.alert(title: "Logout Success", message: "Aha! You are offline now.", dismissTitle: "OK", inViewController: self, withDismissAction: nil)
+            } else {
+                BonAlert.alert(title: "Logout Error", message: BIT.LogoutMessage[value], dismissTitle: "OK", inViewController: self, withDismissAction: nil)
+            }
+            
         }
-        
     }
+    
     
     // FIXME: It doesn't work well
     
@@ -351,97 +301,41 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         //            //"user-agent": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)"
         //        ]
         
-        Alamofire.request(.POST, BIT.URL.ForceLogoutURL, parameters: parameters)
-            .responseString { response in
-                switch response.result {
-                case .Success(let string):
-                    print("Force logout success with string: \(string)")
-                    print(response.debugDescription)
-                    if let value = response.result.value {
-                        print("Force logout: \(value)")
-                    }
-                    
-                case .Failure(let error):
-                    print("Request failed with error: \(error)")
-                }
+        BonNetwork.forceLogout(parameters) { (value) in
+            print("Force logout success with string: \(value)")
         }
     }
     
     // MARK: Get user balance, show it on another view
+    
     func getBalance() {
         
-        //        {
-        //            "buy_mbytes" = "0.00";
-        //            "buy_minutes" = "<null>";
-        //            charge = "10.00";
-        //            client = WEB;
-        //            fid = 11668;
-        //            "flux_long" = "9.00G";
-        //            "flux_long1" = B;
-        //            "flux_long6" = B;
-        //            "free_in_bytes" = 0B;
-        //            "free_out_bytes" = 0B;
-        //            ipv = 4;
-        //            limit = 0;
-        //            "month_fee" = "10.00";
-        //            "remain_fee" = "1.53";
-        //            "remain_flux" = "2,530.89M";
-        //            "remain_timelong" = "<null>";
-        //            speed = 0;
-        //            "time_long" = 0;
-        //            "time_long1" = 0;
-        //            "time_long6" = 0;
-        //            uid = 44064;
-        //            "user_balance" = "11.53";
-        //            "user_in_bytes" = 0B;
-        //            "user_ip" = "10.194.25.196";
-        //            "user_login_name" = 1120141755;
-        //            "user_login_time" = "2016-04-18 09:00:47";
-        //            "user_out_bytes" = 0B;
-        //        }
-        
-        Alamofire.request(.GET, BIT.URL.UserOnlineURL)
-            .responseJSON { response in
-                switch response.result {
-                case .Success(let JSON):
-                    let response = JSON as! NSDictionary
-                    print("Get balance success with string: \(response)")
-                    
-                    //                    if let value = response.result.value {
-                    //                        print("Force logout: \(value)")
-                    //                    }
-                    
-                case .Failure(let error):
-                    print("Request failed with error: \(error)")
-                }
+        BonNetwork.getBalance { (JSON) in
+            let response = JSON as! NSDictionary
+            print("Get balance success with string: \(response)")
+            
+            let userBalance = response.valueForKey("user_balance") as! String
+            BonUserDefaults.userBalance = Double(userBalance)!
+            print(userBalance)
+            
         }
     }
     
     func getLoginState() {
         
-        Alamofire.request(.POST, BIT.URL.RadUserInfoURL)
-            .responseString { response in
-                switch response.result {
-                case .Success(let Json):
-                    print("Get Login State success with string: \(Json)")
-                    
-                    //                    if let value = response.result.value {
-                    //                        print("Login State: \(value)")
-                    //                    }
-                    
-                case .Failure(let error):
-                    print("Request failed with error: \(error)")
-                }
-                
+        BonNetwork.getLoginState { (value) in
+            print("Get Login State success with string: \(value)")
         }
     }
     
     func saveUserInput() {
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setValue(username, forKey: "username")
-        defaults.setValue(password, forKey: "password")
-        defaults.setValue(uid, forKey: "uid")
-        defaults.synchronize()
+        BonUserDefaults.saveUserDefaults(username, password: password, uid: uid)
     }
+    
+    func getUserInfo() {
+        keepLive()
+        getBalance()
+    }
+
     
 }
