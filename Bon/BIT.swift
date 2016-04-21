@@ -77,6 +77,7 @@ class BIT {
         logoutMessage["password_error"] = "Password incorrect"
         logoutMessage["logout_ok"] = "Logout success, please wait 1 minutes and login in。"
         logoutMessage["logout_error"] = "You are offline"
+        logoutMessage["uid_error"] = "You are offline"
 
         
 //        logoutStatus["user_tab_error"] = "认证程序未启动"

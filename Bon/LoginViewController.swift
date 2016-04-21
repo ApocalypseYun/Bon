@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
-    // MARK: Properties
+    // MARK: - Properties
     
     @IBOutlet var loginContentView: UIView!
     @IBOutlet var usernameTextField: UITextField!
@@ -27,15 +28,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     var username: String = ""{
         didSet {
             usernameTextField?.text = username
+            BonUserDefaults.username = username
         }
     }
     var password: String = ""{
         didSet {
             passwordTextField?.text = password
+            BonUserDefaults.password = password
         }
     }
     
-    // MARK: View Lifecycle
+    // MARK: - View Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,9 +46,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         username = BonUserDefaults.username
         password = BonUserDefaults.password
         uid = BonUserDefaults.uid
-        //username = initial("username")
-        //password = initial("password")
-        //uid = initial("uid")
         
         configureLoginInButton()
         configureTextFieldView()
@@ -54,7 +54,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    // MARK: Configuration
+    // MARK: - Configuration
     
     func moveLoginContentViews() {
         UIView.animateWithDuration(10.0) {
@@ -90,14 +90,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.delegate = self
     }
     
-    // MARK: UITextFieldDelegate
+    // MARK: - UITextFieldDelegate
     
     func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
         
-        //print("TextFieldChanged", terminator: "")
-        
         if usernameTextField.text != "" && passwordTextField.text != "" {
-            
             loginButton.enabled = true
         } else {
             loginButton.enabled = false
@@ -113,12 +110,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-//    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-//        usernameTextField.resignFirstResponder()
-//        passwordTextField.resignFirstResponder()
-//    }
-    
-    // MARK: Actions
+    // MARK: - Actions
     
     @IBAction func onUsernameTextField(sender: AnyObject) {
         moveLoginContentViews()
@@ -145,7 +137,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             self.loginButton.selected = false
             
             self.login()
-            self.getBalance()
         }
     }
     
@@ -170,29 +161,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    // MARK: Navigation
+    // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Login" {
-            
+            let balance = getBalance()
+            let remainingData = getRemainingData()
+            if balance != 0 {
+                BonUserDefaults.remainingDataRate = remainingData / balance
+            } else {
+                BonUserDefaults.remainingDataRate = 0
+            }
+            print(BonUserDefaults.remainingDataRate)
         }
         
     }
     
-    func initial(key: String) -> String {
-        let savedData = NSUserDefaults.standardUserDefaults().objectForKey(key) as? String
-        if let data = savedData {
-            loginButton.enabled = true
-            return data
-        } else {
-            loginButton.enabled = false
-            return ""
-        }
-    }
     
-    // MARK: Network operation
+    // MARK: - Network operation
     
     func login() {
+        
         username = usernameTextField.text!
         password = passwordTextField.text!
         
@@ -205,13 +194,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         ]
         
         BonNetwork.login(parameters) { (value) in
-            if Int(value) != nil {
+            print(value)
+            if value =~ Pattern.VALID_UID.description {
                 self.uid = value
                 print(self.uid)
                 
                 //let getUserInfoQueue = dispatch_queue_create("get_user_info_queue", nil)
                 
-                self.getUserInfo()
+                //self.getUserInfo()
 //                dispatch_async(getUserInfoQueue, {
 //                    self.getUserInfo()
 //                    
@@ -221,13 +211,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 //self.keepLive()
                 self.performSegueWithIdentifier("Login", sender: self)
             } else {
+                print(value)
                 BonAlert.alert(title: "Login Error", message: BIT.LoginErrorMessage[value], dismissTitle: "OK", inViewController: self, withDismissAction: nil)
             }
 
         }
     }
     
-    func keepLive() {
+    func getRemainingData() -> Double {
         
         let parameters = [
             "uid": uid
@@ -245,14 +236,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //                }
 //                return userInfo
 //            }()
-            let remainFlux = Double(info[3])!
-            print(remainFlux)
-            print(remainFlux/1024/1024/1024)
-            BonUserDefaults.remainFlux = remainFlux / 1024 / 1024 / 1024
+            let remainingData = Double(info[3])!
+            //print(remainingData)
+            print(remainingData/1024/1024/1024)
+            BonUserDefaults.remainingData = remainingData / 1024 / 1024 / 1024
             self.saveUserInput()
             
             //print("Keep Live: \(userInfo)")
         }
+        
+        return BonUserDefaults.remainingData
     }
     
     
@@ -308,17 +301,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: Get user balance, show it on another view
     
-    func getBalance() {
+    func getBalance() -> Double {
         
-        BonNetwork.getBalance { (JSON) in
-            let response = JSON as! NSDictionary
-            print("Get balance success with string: \(response)")
-            
-            let userBalance = response.valueForKey("user_balance") as! String
-            BonUserDefaults.userBalance = Double(userBalance)!
-            print(userBalance)
-            
+        BonNetwork.getBalance(nil) { (value) in
+            let detail = JSON(value!)
+            print("Get balance success with string: \(detail)")
+            let balance = detail["user_balance"].stringValue
+            //let userBalance = detail.valueForKey("user_balance") as! String
+            BonUserDefaults.balance = Double(balance)!
+            print(balance)
         }
+        return BonUserDefaults.balance
     }
     
     func getLoginState() {
@@ -333,7 +326,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     func getUserInfo() {
-        keepLive()
+        getRemainingData()
         getBalance()
     }
 

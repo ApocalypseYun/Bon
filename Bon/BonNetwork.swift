@@ -38,8 +38,7 @@ class BonNetwork: NSObject {
     
     /**
      *   keepLive function
-     *   url : url
-     *   params : JSON
+     *   parameters : JSON
      *   success : Request success callback function
      */
     
@@ -114,9 +113,9 @@ class BonNetwork: NSObject {
      *   success : Request success callback function
      */
     
-    static func getBalance(success :(value : AnyObject) -> Void) {
+    static func getBalance(parameters :[String : AnyObject]?, success :(value : AnyObject?) -> Void) {
         
-        Alamofire.request(.GET, BIT.URL.UserOnlineURL)
+        Alamofire.request(.GET, BIT.URL.UserOnlineURL, parameters: parameters)
             .responseJSON { response in
                 switch response.result {
                 case .Success(let value):

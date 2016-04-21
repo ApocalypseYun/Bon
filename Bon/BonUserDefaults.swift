@@ -12,10 +12,10 @@ let usernameKey = "username"
 let passwordKey = "password"
 let uidKey = "uid"
 let loginStateKey = "loginState"
-let userBalanceKey = "userBalanceKey"
-let remainFluxKey = "remainFlux"
-let remainFluxRateKey = "ramainFluxRate"
-let userIPKey = "userIP"
+let balanceKey = "balance"
+let remainingDataKey = "remainingData"
+let remainingDataRateKey = "ramainingDataRate"
+let IPKey = "IP"
 
 //Get balance success with string: {
 //    "buy_mbytes" = "0.00";
@@ -134,48 +134,45 @@ class BonUserDefaults {
         }
     }
     
-    static var userBalance: Double = {
-        let userBalance = defaults.doubleForKey(userBalanceKey)
-        return userBalance
+    static var balance: Double = {
+        let balance = defaults.doubleForKey(balanceKey)
+        return balance
         }() {
         didSet {
-            if userBalance != 0 {
-                remainFluxRate = remainFlux / userBalance
-            }
-            defaults.setValue(userBalance, forKey: userBalanceKey)
+            defaults.setValue(balance, forKey: balanceKey)
             defaults.synchronize()
         }
     }
     
-    static var remainFlux: Double = {
-        let remainFlux = defaults.doubleForKey(remainFluxKey)
-        return remainFlux
+    static var remainingData: Double = {
+        let remainingData = defaults.doubleForKey(remainingDataKey)
+        return remainingData
         }() {
         didSet {
-            defaults.setDouble(remainFlux, forKey: remainFluxKey)
+            defaults.setDouble(remainingData, forKey: remainingDataKey)
             defaults.synchronize()
         }
     }
     
-    static var remainFluxRate: Double = {
-        let remainFluxRate = defaults.doubleForKey(remainFluxRateKey)
-        return remainFluxRate
+    static var remainingDataRate: Double = {
+        let remainingDataRate = defaults.doubleForKey(remainingDataRateKey)
+        return remainingDataRate
         }() {
         didSet {
-            defaults.setDouble(remainFluxRate, forKey: remainFluxRateKey)
+            defaults.setDouble(remainingDataRate, forKey: remainingDataRateKey)
             defaults.synchronize()
         }
     }
     
-    static var userIP: String = {
-        let savedUserIP = defaults.stringForKey(userIPKey)
+    static var IP: String = {
+        let savedUserIP = defaults.stringForKey(IPKey)
         if let userIP = savedUserIP {
-            return userIPKey
+            return IPKey
         }
         return ""
         }() {
         didSet {
-            defaults.setValue(userIP, forKey: userIPKey)
+            defaults.setValue(IP, forKey: IPKey)
             defaults.synchronize()
         }
     }
