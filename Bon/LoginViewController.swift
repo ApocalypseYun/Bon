@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 import SwiftyJSON
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
@@ -130,7 +131,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loadingView.startAnimating()
         loginButton.selected = true
         
-        saveUserInput()
+        //saveUserInput()
         
         delay(2.0) { 
             self.loadingView.stopAnimating()
@@ -144,13 +145,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         whiteActivityIndicator.startAnimating()
         loginButton.selected = true
         
-        saveUserInput()
+        //saveUserInput()
         
         delay(2.0) {
             self.whiteActivityIndicator.stopAnimating()
             self.loginButton.selected = false
-            
-            self.logout()
+            //self.DO_LOGIN()
+            //self.DO_LOGOUT()
+            //self.logout()
+            self.forceLogout()
         }
         
     }
@@ -165,14 +168,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "Login" {
-            let balance = getBalance()
-            let remainingData = getRemainingData()
-            if balance != 0 {
-                BonUserDefaults.remainingDataRate = remainingData / balance
-            } else {
-                BonUserDefaults.remainingDataRate = 0
-            }
-            print(BonUserDefaults.remainingDataRate)
+//            let balance = getBalance()
+//            let remainingData = getRemainingData()
+//            if balance != 0 {
+//                BonUserDefaults.remainingDataRate = remainingData / balance
+//            } else {
+//                BonUserDefaults.remainingDataRate = 0
+//            }
+//            print(BonUserDefaults.remainingDataRate)
         }
         
     }
@@ -185,37 +188,66 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         username = usernameTextField.text!
         password = passwordTextField.text!
         
+//        let parameters = [
+//            "username": username,
+//            "password": password.MD5,
+//            "drop": "0",
+//            "type": "1",
+//            "n": "100"
+//        ]
+        
         let parameters = [
+            "action": "login",
             "username": username,
-            "password": password.MD5,
-            "drop": "0",
-            "type": "1",
-            "n": "100"
+            "password": password,
+            "ac_id": "1",
+            "user_ip": "",
+            "nas_ip": "",
+            "user_mac": "",
+            "save_me": "1",
+            "ajax": "1"
         ]
         
-        BonNetwork.login(parameters) { (value) in
+        BonNetwork.post(parameters) { (value) in
             print(value)
-            if value =~ Pattern.VALID_UID.description {
-                self.uid = value
-                print(self.uid)
-                
-                //let getUserInfoQueue = dispatch_queue_create("get_user_info_queue", nil)
-                
-                //self.getUserInfo()
-//                dispatch_async(getUserInfoQueue, {
-//                    self.getUserInfo()
-//                    
-//                    dispatch_async(dispatch_get_main_queue(), { })
-//                })
-                
-                //self.keepLive()
+            if value.containsString("login_ok,") {
+                self.getUserInfo()
                 self.performSegueWithIdentifier("Login", sender: self)
             } else {
-                print(value)
-                BonAlert.alert(title: "Login Error", message: BIT.LoginErrorMessage[value], dismissTitle: "OK", inViewController: self, withDismissAction: nil)
+                BonAlert.alertSorry(message: "Login Error", inViewController: self)
+//                BonAlert.alert(title: "Login Error", message: , dismissTitle: "OK", inViewController: self, withDismissAction: nil)
             }
-
+            
         }
+        
+//        Alamofire.request(.POST, "http://10.0.0.55:801/include/auth_action.php", parameters: parameters)
+//            .responseString { response in
+//                print(response)
+//        }
+
+//        BonNetwork.login(parameters) { (value) in
+//            print(value)
+//            if value =~ Pattern.VALID_UID.description {
+//                self.uid = value
+//                print(self.uid)
+//                
+//                //let getUserInfoQueue = dispatch_queue_create("get_user_info_queue", nil)
+//                
+//                //self.getUserInfo()
+////                dispatch_async(getUserInfoQueue, {
+////                    self.getUserInfo()
+////                    
+////                    dispatch_async(dispatch_get_main_queue(), { })
+////                })
+//                
+//                //self.keepLive()
+//                self.performSegueWithIdentifier("Login", sender: self)
+//            } else {
+//                print(value)
+//                BonAlert.alert(title: "Login Error", message: BIT.LoginErrorMessage[value], dismissTitle: "OK", inViewController: self, withDismissAction: nil)
+//            }
+//
+//        }
     }
     
     func getRemainingData() -> Double {
@@ -240,7 +272,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             //print(remainingData)
             print(remainingData/1024/1024/1024)
             BonUserDefaults.remainingData = remainingData / 1024 / 1024 / 1024
-            self.saveUserInput()
+            //self.saveUserInput()
             
             //print("Keep Live: \(userInfo)")
         }
@@ -253,19 +285,23 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func logout() {
         
         let parameters = [
-            "uid": uid
+            "action": "auto_logout"
         ]
-        print("logout: \(uid)")
-        BonNetwork.logout(parameters) { (value) in
-            print("Logout: \(value)")
-            
-            if value == "logout_ok" {
-                BonAlert.alert(title: "Logout Success", message: "Aha! You are offline now.", dismissTitle: "OK", inViewController: self, withDismissAction: nil)
-            } else {
-                BonAlert.alert(title: "Logout Error", message: BIT.LogoutMessage[value], dismissTitle: "OK", inViewController: self, withDismissAction: nil)
-            }
-            
+        BonNetwork.post(parameters) { (value) in
+            BonAlert.alert(title: "Logout Success", message: "Aha! You are offline now.", dismissTitle: "OK", inViewController: self, withDismissAction: nil)
         }
+        //print("logout: \(uid)")
+        
+//        BonNetwork.logout(parameters) { (value) in
+//            print("Logout: \(value)")
+//            
+//            if value == "logout_ok" {
+//                BonAlert.alert(title: "Logout Success", message: "Aha! You are offline now.", dismissTitle: "OK", inViewController: self, withDismissAction: nil)
+//            } else {
+//                BonAlert.alert(title: "Logout Error", message: BIT.LogoutMessage[value], dismissTitle: "OK", inViewController: self, withDismissAction: nil)
+//            }
+//            
+//        }
     }
     
     
@@ -275,16 +311,39 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         username = usernameTextField.text!
         password = passwordTextField.text!
         
-        // "582023371"
-        // "691918"
+        
         let parameters = [
+            "action": "logout",
             "username": username,
             "password": password,
-            //            "drop": "0",
-            //            "type": "1",
-            //            "n": "1"
+            "ajax": "1"
         ]
-        print(parameters)
+        
+        BonNetwork.post(parameters) { (value) in
+            print(value)
+            BonAlert.alert(title: "Logout Success", message: "Aha! You are offline now.", dismissTitle: "OK", inViewController: self, withDismissAction: nil)
+            //if value.containsString("logout_ok")
+        }
+        
+//        Alamofire.request(.POST, "http://10.0.0.55:801/include/auth_action.php", parameters: parameters)
+//            .responseString { response in
+//                print(response)
+//        }
+        
+        ///^login_ok,/
+        //action=login&username=1120141755&password=039026&ac_id=1&user_ip=&nas_ip=&user_mac=&save_me=1&ajax=1
+
+        
+        // "582023371"
+        // "691918"
+//        let parameters = [
+//            "username": username,
+//            "password": password,
+//            //            "drop": "0",
+//            //            "type": "1",
+//            //            "n": "1"
+//        ]
+//        print(parameters)
         
         //        let headers = [
         //            "Content-Type": "application/x-www-form-urlencoded",
@@ -294,9 +353,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         //            //"user-agent": "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)"
         //        ]
         
-        BonNetwork.forceLogout(parameters) { (value) in
-            print("Force logout success with string: \(value)")
-        }
+//        BonNetwork.forceLogout(parameters) { (value) in
+//            print("Force logout success with string: \(value)")
+//        }
     }
     
     // MARK: Get user balance, show it on another view
@@ -321,14 +380,89 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func saveUserInput() {
-        BonUserDefaults.saveUserDefaults(username, password: password, uid: uid)
-    }
+//    func saveUserInput() {
+//        BonUserDefaults.saveUserDefaults(username, password: password, uid: uid)
+//    }
     
+//    //func getUserInfo() {
+//        getRemainingData()
+//        getBalance()
+//    }
+
     func getUserInfo() {
-        getRemainingData()
-        getBalance()
+        
+        let parameters = [
+            "action": "get_online_info",
+            //"user_ip": "10.194.182.127"
+        ]
+        
+//        let logoutParameters = [
+//            "is_logout": "1"
+//        ]
+        
+        BonNetwork.post(parameters) { (value) in
+            print(value)
+            let info = value.componentsSeparatedByString(",")
+            BonUserDefaults.balance = Double(info[2])!
+            print(info[2])
+            let seconds = Int(info[1])!
+            self.formatTime(seconds)
+            BonUserDefaults.seconds = seconds
+        }
+        
+        //      Data, time, balance, username
+        //SUCCESS: 0,2656,1.53,D0331191353C,1120141755,0
+        
+//        Alamofire.request(.POST, "http://10.0.0.55:801/include/auth_action.php", parameters: parameters)
+//            .responseString { response in
+//                print(response)
+//                
+//                //let data = JSON(response.result.value!)
+//                //print(data)
+//                let data = response.result.value!.dataUsingEncoding(NSUTF8StringEncoding)
+//                let cfEnc = CFStringEncodings.GB_18030_2000
+//                let enc = CFStringConvertEncodingToNSStringEncoding(CFStringEncoding(cfEnc.rawValue))
+//                let dogString:String = String(data: data!, encoding: enc)!
+//                print(dogString)
+//                //let data = NSData(response.result.value)
+//                //let value = response.result.value!.stringByAddingPercentEscapesUsingEncoding(NSUTF8StringEncoding)
+//                //let value1 = value!.stringByRemovingPercentEncoding
+//                //let value = response.result.value!.stringByRemovingPercentEncoding(NSUTF8StringEncoding)
+//                //BonAlert.alert(title: "Logout Error", message: data, dismissTitle: "OK", inViewController: self, withDismissAction: nil)
+//        }
+        
     }
 
+    func formatData(byte: Int) -> String {
+        
+        if byte > 1024 * 1024 {
+            let megabyte = byte / (1024 * 1024)
+            return "\(megabyte)M"
+        } else if byte > 1024 {
+            let kilobyte = byte / 1024
+            return "\(kilobyte)K"
+        } else {
+            return "\(byte)b"
+        }
+    }
     
+    func formatTime(seconds: Int) {
+//        NSInteger timeInSeconds = 54000;
+//        
+//        NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:timeInSeconds]];
+//        
+//        NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+//        [formatter setDateFormat:@"hh:mm:ss a"];
+//        
+//        NSString *dateString = [formatter stringFromDate:date];
+        
+//        let date = NSDate(timeIntervalSinceReferenceDate(seconds))
+        let date = NSDate(timeIntervalSinceReferenceDate: NSTimeInterval(seconds)) // it means give me the time that happens after January,1st, 2001, 12:00 am by zero seconds
+        print(date)
+        let formatter = NSDateFormatter()
+        formatter.timeStyle = .MediumStyle
+        formatter.timeZone = NSTimeZone(name: "UTC")
+        let text = formatter.stringFromDate(date)
+        print(text) //2001-01-01 00:00:00
+    }
 }

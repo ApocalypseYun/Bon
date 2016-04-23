@@ -16,7 +16,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-//        NSUserDefaults.standardUserDefaults().registerDefaults(["UserAgent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"])
+        UILabel.appearance().substituteFontName = BonConfig.BonFont
+        //UILabel.appearance().tintColor = UIColor.bonTintColor()
+//        UILabel.appearance().font = UIFont(name: "Avenir Book", size: 18)
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSFontAttributeName: UIFont(name: "Avenir Book", size: 18)!,
+            NSForegroundColorAttributeName: UIColor.whiteColor()
+        ]
+        //UINavigationItem.
+        //UINavigationBar.appearance().
+        //let bonNavigationController = BonNavigationController()
+        //self.bonNavigationController.navigationBar.tintColor = UIColor.bonTintColor()
+        //UINavigationBar.appearance().tintColor = UIColor.bonTintColor()
+        UITabBar.appearance().tintColor = UIColor.bonTintColor()
         
         // Override point for customization after application launch.
         return true

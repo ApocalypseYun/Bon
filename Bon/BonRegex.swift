@@ -9,7 +9,8 @@
 import Foundation
 
 public enum Pattern: String, CustomStringConvertible {
-    case VALID_UID = "^[\\d]+$"
+    case VALID_UID = "^login_ok,"
+    //case VALID_UID = "^[\\d]+$"
     case VALID_KEEPLIVE_STATUS = "^[\\d]+,[\\d]+,[\\d]+,[\\d]+"
     case VALID_BALANCE = "\"remain_flux\":\"([\\d,\\.]+)M\""
     case VALID_USED_IN = "\"user_in_bytes\":\"([\\d,\\.]+)M\""

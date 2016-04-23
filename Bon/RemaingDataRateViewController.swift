@@ -26,7 +26,7 @@ class RemaingDataRateViewController: UIViewController {
         waveLoadingIndicator.frame = remainingDataRateImageView.bounds
         waveLoadingIndicator.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         
-        let remainingDataRate = BonUserDefaults.remainingDataRate
+        let remainingDataRate = BonUserDefaults.balance / 10
         waveLoadingIndicator.progress = remainingDataRate
     }
     

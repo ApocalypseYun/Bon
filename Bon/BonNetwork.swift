@@ -11,6 +11,51 @@ import Alamofire
 
 class BonNetwork: NSObject {
     
+//    var alamoFireManager = Alamofire.Manager.sharedInstance
+//    
+//    let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+//    configuration.timeoutIntervalForRequest = 4 // seconds
+//    configuration.timeoutIntervalForResource = 4
+//    self.alamoFireManager = Alamofire.Manager(configuration: configuration)
+//    let center = NSNotificationCenter.defaultCenter()
+//    var alamoFireManager : Alamofire.Manager?
+//    
+//    var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+//    //configuration.timeoutIntervalForRequest = 4 // seconds
+//    configuration.timeoutIntervalForResource = 4
+//    self.alamoFireManager = Alamofire.Manager(configuration: configuration)
+    
+//    var alamofireManager : Manager?
+//    // 设置请求的超时时间
+//    let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+//    config.timeoutIntervalForRequest = 5    // 秒
+//    self.alamofireManager = Manager(configuration: config)
+    
+    /**
+     *   login function
+     *   url : url
+     *   params : JSON
+     *   success : Request success callback function
+     */
+    
+    static func post(parameters: [String : AnyObject]?, success: (value: String) -> Void) {
+        
+        //UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        Alamofire.request(.POST, BIT.URL.AuthActionURL, parameters: parameters)
+            .responseString{ response in
+                switch response.result {
+                case .Success(let value):
+                    success(value: value)
+                    
+                case .Failure(let error):
+                    print("Request failed with error: \(error)")
+                }
+        }
+        
+        
+    }
+
+    
     /**
      *   login function
      *   url : url

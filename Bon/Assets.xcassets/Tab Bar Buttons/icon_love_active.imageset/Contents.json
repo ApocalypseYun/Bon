@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "icon_love_active.pdf",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "messages_tab_img@2x.png",
+      "filename" : "icon_love_active@2x.pdf",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "icon_love_active@3x.pdf",
       "scale" : "3x"
     }
   ],

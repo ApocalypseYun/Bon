@@ -16,6 +16,7 @@ let balanceKey = "balance"
 let remainingDataKey = "remainingData"
 let remainingDataRateKey = "ramainingDataRate"
 let IPKey = "IP"
+let secondsKey = "seconds"
 
 //Get balance success with string: {
 //    "buy_mbytes" = "0.00";
@@ -173,6 +174,17 @@ class BonUserDefaults {
         }() {
         didSet {
             defaults.setValue(IP, forKey: IPKey)
+            defaults.synchronize()
+        }
+    }
+    
+    static var seconds: Int = {
+        let seconds = defaults.integerForKey(secondsKey)
+        return seconds
+        }() {
+        didSet {
+            defaults.setInteger(seconds, forKey: secondsKey)
+            //defaults.setDouble(remainingDataRate, forKey: remainingDataRateKey)
             defaults.synchronize()
         }
     }

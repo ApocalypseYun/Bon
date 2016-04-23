@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Tag-->
         <scene sceneID="fla-Rw-h6W">
             <objects>
                 <viewController id="vNa-rN-Urg" sceneMemberID="viewController">
@@ -17,15 +17,15 @@
                     <view key="view" contentMode="scaleToFill" id="OXJ-gM-GtX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zCq-nm-82m"/>
+                    <navigationItem key="navigationItem" title="Tag" id="zCq-nm-82m"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OMt-0v-pbo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1053.75" y="1809.5070422535209"/>
         </scene>
-        <!--View Controller-->
+        <!--Love-->
         <scene sceneID="qIT-eX-fQQ">
             <objects>
                 <viewController id="kab-Bg-V42" sceneMemberID="viewController">
@@ -36,18 +36,18 @@
                     <view key="view" contentMode="scaleToFill" id="197-7R-wZJ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="yMZ-dF-yDX"/>
+                    <navigationItem key="navigationItem" title="Love" id="yMZ-dF-yDX"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QzJ-dc-bmn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1897.5" y="1809.5070422535209"/>
         </scene>
-        <!--View Controller-->
+        <!--Plane-->
         <scene sceneID="yJm-M8-fUH">
             <objects>
-                <viewController id="Lii-N0-TKA" sceneMemberID="viewController">
+                <viewController id="Lii-N0-TKA" customClass="TimeViewController" customModule="Bon" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6kK-dR-Lfs"/>
                         <viewControllerLayoutGuide type="bottom" id="pAa-gQ-741"/>
@@ -55,9 +55,33 @@
                     <view key="view" contentMode="scaleToFill" id="GZk-is-38R">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D02-Dm-f6Q">
+                                <rect key="frame" x="247" y="285" width="107" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="puj-oH-7e8">
+                                <rect key="frame" x="276" y="414" width="48" height="30"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="onLogoutButton:" destination="Lii-N0-TKA" eventType="touchUpInside" id="8Te-7t-jPL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="puj-oH-7e8" firstAttribute="centerX" secondItem="GZk-is-38R" secondAttribute="centerX" id="Lpa-Rh-uW3"/>
+                            <constraint firstItem="D02-Dm-f6Q" firstAttribute="centerY" secondItem="GZk-is-38R" secondAttribute="centerY" id="omV-9f-cfz"/>
+                            <constraint firstItem="D02-Dm-f6Q" firstAttribute="centerX" secondItem="GZk-is-38R" secondAttribute="centerX" id="vyf-Om-p9t"/>
+                            <constraint firstItem="pAa-gQ-741" firstAttribute="top" secondItem="puj-oH-7e8" secondAttribute="bottom" constant="107" id="zUB-Hp-MMO"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="wrC-0R-VMY"/>
+                    <navigationItem key="navigationItem" title="Plane" id="wrC-0R-VMY"/>
+                    <connections>
+                        <outlet property="timeLabel" destination="D02-Dm-f6Q" id="qON-NO-YQN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QYj-aJ-wL0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -87,7 +111,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kKI-Ob-sOo">
-                                <rect key="frame" x="175" y="143" width="250" height="250"/>
+                                <rect key="frame" x="175" y="76" width="250" height="250"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="250" id="DvG-5R-y4S"/>
                                     <constraint firstAttribute="height" constant="250" id="GCf-fh-kAl"/>
@@ -107,7 +131,7 @@
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fFo-DZ-5RO" firstAttribute="centerY" secondItem="nVZ-sz-HUO" secondAttribute="centerY" id="FDi-vE-YiE"/>
-                            <constraint firstItem="kKI-Ob-sOo" firstAttribute="centerY" secondItem="nVZ-sz-HUO" secondAttribute="centerY" id="Kai-gJ-r3W"/>
+                            <constraint firstItem="kKI-Ob-sOo" firstAttribute="centerY" secondItem="nVZ-sz-HUO" secondAttribute="centerY" constant="-67" id="Kai-gJ-r3W"/>
                             <constraint firstItem="kKI-Ob-sOo" firstAttribute="centerX" secondItem="nVZ-sz-HUO" secondAttribute="centerX" id="Pxv-pW-oMX"/>
                             <constraint firstItem="fFo-DZ-5RO" firstAttribute="centerX" secondItem="nVZ-sz-HUO" secondAttribute="centerX" id="RME-YS-kuo"/>
                             <constraint firstItem="vZ1-8S-j3S" firstAttribute="centerX" secondItem="nVZ-sz-HUO" secondAttribute="centerX" id="b5S-Jp-jIA"/>
@@ -166,7 +190,7 @@
                                             <constraint firstAttribute="height" constant="50" id="O0m-p8-2Aj"/>
                                             <constraint firstAttribute="height" constant="50" id="cka-h4-hk8"/>
                                         </constraints>
-                                        <state key="normal" title="Log In">
+                                        <state key="normal" title="Login">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="disabled">
@@ -444,7 +468,7 @@
         <!--Data-->
         <scene sceneID="o5H-JE-pZP">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oLw-On-S8z" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="oLw-On-S8z" customClass="BonNavigationController" customModule="Bon" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Data" image="icon_data" selectedImage="icon_data_active" id="IYi-bN-xv7"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="nKM-rQ-LT0">
@@ -469,16 +493,16 @@
             </objects>
             <point key="canvasLocation" x="-653" y="1135"/>
         </scene>
-        <!--Requests-->
+        <!--Plane-->
         <scene sceneID="nHE-Cc-0FJ">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="47U-MC-xez" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Requests" image="requests" id="MkB-Mg-2IX"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="47U-MC-xez" customClass="BonNavigationController" customModule="Bon" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Plane" image="icon_plane" selectedImage="icon_plane_active" id="MkB-Mg-2IX"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="M6M-ka-RyF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.50196078430000002" green="0.4823529412" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.41960784313725491" green="0.396078431372549" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -489,15 +513,16 @@
             </objects>
             <point key="canvasLocation" x="163.125" y="1135.5633802816901"/>
         </scene>
-        <!--Messages-->
+        <!--Tag-->
         <scene sceneID="vJd-Te-2dT">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Oqt-Nt-OM5" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Messages" image="messages" id="qCd-HE-uha"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Oqt-Nt-OM5" customClass="BonNavigationController" customModule="Bon" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Tag" image="icon_tag" selectedImage="icon_tag_active" id="qCd-HE-uha"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fHW-k9-Pji">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.41960784313725491" green="0.396078431372549" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -508,15 +533,16 @@
             </objects>
             <point key="canvasLocation" x="1053.75" y="1135.5633802816901"/>
         </scene>
-        <!--Notifications-->
+        <!--Love-->
         <scene sceneID="G7K-UE-BnU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="InI-qC-KVn" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notifications" image="notifications" id="yQk-J4-LvF"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="InI-qC-KVn" customClass="BonNavigationController" customModule="Bon" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Love" image="icon_love" selectedImage="icon_love_active" id="yQk-J4-LvF"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Ys-E8-MLe">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.41960784313725491" green="0.396078431372549" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -527,16 +553,16 @@
             </objects>
             <point key="canvasLocation" x="1897.5" y="1135.5633802816901"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Profile-->
         <scene sceneID="9ms-FD-aSb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="khx-aa-c26" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="more" id="1ue-sw-dYE"/>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="khx-aa-c26" customClass="BonNavigationController" customModule="Bon" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="icon_me" selectedImage="icon_me_active" id="1ue-sw-dYE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="jqO-Os-PmS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="barTintColor" red="0.50196078430000002" green="0.4823529412" blue="0.5450980392" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="barTintColor" red="0.41960784313725491" green="0.396078431372549" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="YZK-Fn-xdE">
@@ -552,7 +578,7 @@
             </objects>
             <point key="canvasLocation" x="2713.125" y="1135.5633802816901"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--Profile-->
         <scene sceneID="ufW-Dt-0iB">
             <objects>
                 <viewController id="a5h-Sa-d8f" customClass="ProfileViewController" customModule="Bon" customModuleProvider="target" sceneMemberID="viewController">
@@ -563,9 +589,24 @@
                     <view key="view" contentMode="scaleToFill" id="dAJ-Jy-G2w">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tNc-KI-KOQ">
+                                <rect key="frame" x="265" y="280" width="71" height="41"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="30"/>
+                                <color key="textColor" red="0.41960784309999999" green="0.39607843139999999" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="tNc-KI-KOQ" firstAttribute="centerY" secondItem="dAJ-Jy-G2w" secondAttribute="centerY" id="Bse-H1-2BX"/>
+                            <constraint firstItem="tNc-KI-KOQ" firstAttribute="centerX" secondItem="dAJ-Jy-G2w" secondAttribute="centerX" id="gDF-kL-Qzc"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="hXg-9f-ASc"/>
+                    <navigationItem key="navigationItem" title="Profile" id="hXg-9f-ASc"/>
+                    <connections>
+                        <outlet property="welcomeLabel" destination="tNc-KI-KOQ" id="8t4-wf-VbH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0EQ-wJ-h3e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -652,9 +693,14 @@
         <image name="Bon" width="160" height="92"/>
         <image name="icon_data" width="30" height="30"/>
         <image name="icon_data_active" width="30" height="30"/>
-        <image name="messages" width="27" height="27"/>
-        <image name="notifications" width="22" height="22"/>
-        <image name="requests" width="22" height="16"/>
+        <image name="icon_love" width="30" height="30"/>
+        <image name="icon_love_active" width="30" height="30"/>
+        <image name="icon_me" width="30" height="30"/>
+        <image name="icon_me_active" width="30" height="30"/>
+        <image name="icon_plane" width="30" height="30"/>
+        <image name="icon_plane_active" width="30" height="30"/>
+        <image name="icon_tag" width="30" height="30"/>
+        <image name="icon_tag_active" width="30" height="30"/>
     </resources>
     <color key="tintColor" red="0.4941176471" green="0.47450980390000003" blue="0.53725490200000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -1,0 +1,10 @@
+framework module NumberMorphView {
+  umbrella header "NumberMorphView-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module NumberMorphView.Swift {
+    header "NumberMorphView-Swift.h"
+}

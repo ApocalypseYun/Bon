@@ -11,5 +11,5 @@ import Foundation
 class BonConfig {
     
     static let appGroupID: String = "group.chriskuei.Bon"
-    
+    static let BonFont: String = "Avenir Book"
 }
