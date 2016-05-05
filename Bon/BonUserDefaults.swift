@@ -8,13 +8,12 @@
 
 import Foundation
 
+let loginStateKey = "loginState"
+
 let usernameKey = "username"
 let passwordKey = "password"
-let uidKey = "uid"
-let loginStateKey = "loginState"
 let balanceKey = "balance"
-let remainingDataKey = "remainingData"
-let remainingDataRateKey = "ramainingDataRate"
+let usedDataKey = "usedData"
 let IPKey = "IP"
 let secondsKey = "seconds"
 
@@ -64,7 +63,6 @@ class BonUserDefaults {
         
         defaults.setValue(username, forKey: usernameKey)
         defaults.setValue(password, forKey: passwordKey)
-        defaults.setValue(uid, forKey: uidKey)
         defaults.synchronize()
         
         defaults.synchronize()
@@ -74,7 +72,6 @@ class BonUserDefaults {
         
         defaults.removeObjectForKey(usernameKey)
         defaults.removeObjectForKey(passwordKey)
-        defaults.removeObjectForKey(uidKey)
         
         defaults.synchronize()
     }
@@ -107,20 +104,6 @@ class BonUserDefaults {
         }
     }
     
-    static var uid: String = {
-        let savedUid = defaults.stringForKey(uidKey)
-        if let uid = savedUid {
-            return uid
-        } else {
-            return ""
-        }
-        }() {
-        didSet {
-            defaults.setValue(uid, forKey: uidKey)
-            defaults.synchronize()
-        }
-    }
-    
     static var loginState: String = {
         let savedLoginState = defaults.stringForKey(loginStateKey)
         if let loginState = savedLoginState {
@@ -144,31 +127,11 @@ class BonUserDefaults {
             defaults.synchronize()
         }
     }
-    
-    static var remainingData: Double = {
-        let remainingData = defaults.doubleForKey(remainingDataKey)
-        return remainingData
-        }() {
-        didSet {
-            defaults.setDouble(remainingData, forKey: remainingDataKey)
-            defaults.synchronize()
-        }
-    }
-    
-    static var remainingDataRate: Double = {
-        let remainingDataRate = defaults.doubleForKey(remainingDataRateKey)
-        return remainingDataRate
-        }() {
-        didSet {
-            defaults.setDouble(remainingDataRate, forKey: remainingDataRateKey)
-            defaults.synchronize()
-        }
-    }
-    
+        
     static var IP: String = {
         let savedUserIP = defaults.stringForKey(IPKey)
         if let userIP = savedUserIP {
-            return IPKey
+            return userIP
         }
         return ""
         }() {
@@ -184,9 +147,18 @@ class BonUserDefaults {
         }() {
         didSet {
             defaults.setInteger(seconds, forKey: secondsKey)
-            //defaults.setDouble(remainingDataRate, forKey: remainingDataRateKey)
             defaults.synchronize()
         }
     }
     
+    static var usedData: Double = {
+        let usedData = defaults.doubleForKey(usedDataKey)
+        return usedData
+        }() {
+        didSet {
+            defaults.setDouble(usedData, forKey: usedDataKey)
+            defaults.synchronize()
+        }
+    }
+
 }

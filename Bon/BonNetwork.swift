@@ -1,5 +1,5 @@
 //
-//  BonService.swift
+//  BonNetwork.swift
 //  Bon
 //
 //  Created by Chris on 16/4/18.
@@ -11,25 +11,25 @@ import Alamofire
 
 class BonNetwork: NSObject {
     
-//    var alamoFireManager = Alamofire.Manager.sharedInstance
-//    
+    var alamoFireManager = Alamofire.Manager.sharedInstance
+    
 //    let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
 //    configuration.timeoutIntervalForRequest = 4 // seconds
 //    configuration.timeoutIntervalForResource = 4
 //    self.alamoFireManager = Alamofire.Manager(configuration: configuration)
-//    let center = NSNotificationCenter.defaultCenter()
-//    var alamoFireManager : Alamofire.Manager?
-//    
-//    var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-//    //configuration.timeoutIntervalForRequest = 4 // seconds
-//    configuration.timeoutIntervalForResource = 4
-//    self.alamoFireManager = Alamofire.Manager(configuration: configuration)
+    //    let center = NSNotificationCenter.defaultCenter()
+    //    var alamoFireManager : Alamofire.Manager?
+    //
+    //    var configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
+    //    //configuration.timeoutIntervalForRequest = 4 // seconds
+    //    configuration.timeoutIntervalForResource = 4
+    //    self.alamoFireManager = Alamofire.Manager(configuration: configuration)
     
-//    var alamofireManager : Manager?
-//    // 设置请求的超时时间
-//    let config = NSURLSessionConfiguration.defaultSessionConfiguration()
-//    config.timeoutIntervalForRequest = 5    // 秒
-//    self.alamofireManager = Manager(configuration: config)
+    //    var alamofireManager : Manager?
+    //    // 设置请求的超时时间
+    //    let config = NSURLSessionConfiguration.defaultSessionConfiguration()
+    //    config.timeoutIntervalForRequest = 5    // 秒
+    //    self.alamofireManager = Manager(configuration: config)
     
     /**
      *   login function
@@ -48,13 +48,31 @@ class BonNetwork: NSObject {
                     success(value: value)
                     
                 case .Failure(let error):
-                    print("Request failed with error: \(error)")
+                    print(error)
                 }
         }
         
         
     }
 
+    
+    static func post(parameters: [String : AnyObject]?, success: (value: String) -> Void, fail: (error : Any) -> Void) {
+        
+        //UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+        Alamofire.request(.POST, BIT.URL.AuthActionURL, parameters: parameters)
+            .responseString{ response in
+                switch response.result {
+                case .Success(let value):
+                    success(value: value)
+                    
+                case .Failure(let error):
+                    fail(error: error)
+                }
+        }
+        
+        
+    }
+    
     
     /**
      *   login function

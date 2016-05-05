@@ -16,6 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        //UIView.appearance().backgroundColor = UIColor.bonTintColor()
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
         UILabel.appearance().substituteFontName = BonConfig.BonFont
         //UILabel.appearance().tintColor = UIColor.bonTintColor()
 //        UILabel.appearance().font = UIFont(name: "Avenir Book", size: 18)

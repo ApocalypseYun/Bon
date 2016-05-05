@@ -14,11 +14,9 @@
 		831CCAD61CC36E4200DEF69E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831CCAD41CC36E4200DEF69E /* Alamofire.framework */; };
 		831CCAD71CC36E4200DEF69E /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831CCAD51CC36E4200DEF69E /* CryptoSwift.framework */; };
 		831CCADB1CC36F0B00DEF69E /* BIT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CCADA1CC36F0B00DEF69E /* BIT.swift */; };
-		831E373E1CC53BA000B2F38A /* BonNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831E373D1CC53BA000B2F38A /* BonNetwork.swift */; };
-		836276381CC627380010D34B /* RemaingDataRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836276371CC627380010D34B /* RemaingDataRateViewController.swift */; };
+		836276381CC627380010D34B /* UsedDataRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836276371CC627380010D34B /* UsedDataRateViewController.swift */; };
 		8362763C1CC62CF40010D34B /* WaveLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836276391CC62CF40010D34B /* WaveLoadingIndicator.swift */; };
-		836276421CC65A180010D34B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 836276411CC65A180010D34B /* SwiftyJSON.framework */; };
-		836276451CC71A2A0010D34B /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836276441CC71A2A0010D34B /* SettingViewController.swift */; };
+		836276451CC71A2A0010D34B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836276441CC71A2A0010D34B /* SettingsViewController.swift */; };
 		836276481CC71A420010D34B /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836276471CC71A420010D34B /* AboutViewController.swift */; };
 		8362764C1CC71B4F0010D34B /* UIColor+Bon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8362764B1CC71B4F0010D34B /* UIColor+Bon.swift */; };
 		8362764F1CC72F370010D34B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8362764E1CC72F370010D34B /* ProfileViewController.swift */; };
@@ -26,10 +24,12 @@
 		8368215E1CC4F5D7004C43C1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8368215D1CC4F5D7004C43C1 /* Main.storyboard */; };
 		836821651CC502A3004C43C1 /* String+Bon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836821641CC502A3004C43C1 /* String+Bon.swift */; };
 		838150A21CCA73F1001B7009 /* NSDate+Bon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838150A11CCA73F1001B7009 /* NSDate+Bon.swift */; };
-		838150A51CCA7705001B7009 /* TimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838150A41CCA7705001B7009 /* TimeViewController.swift */; };
-		838150A91CCA7AFA001B7009 /* NumberMorphView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 838150A81CCA7AFA001B7009 /* NumberMorphView.framework */; };
+		838150A51CCA7705001B7009 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838150A41CCA7705001B7009 /* InfoViewController.swift */; };
 		83C5F9F61CC92B3C00183D93 /* BonNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5F9F51CC92B3C00183D93 /* BonNavigationController.swift */; };
 		83C5F9FC1CC93FEE00183D93 /* UILabel+Bon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C5F9FB1CC93FEE00183D93 /* UILabel+Bon.swift */; };
+		83F62AE71CCCD16500484E60 /* BonNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F62AE61CCCD16500484E60 /* BonNetwork.swift */; };
+		83F62AEB1CCCF31E00484E60 /* UIButton+Bon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F62AEA1CCCF31E00484E60 /* UIButton+Bon.swift */; };
+		83F62AED1CCD196F00484E60 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83F62AEC1CCD196F00484E60 /* Settings.storyboard */; };
 		83F88C431CC5FAFD005B4786 /* BonDelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F88C421CC5FAFD005B4786 /* BonDelay.swift */; };
 		83F88C451CC5FD03005B4786 /* BonRegex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F88C441CC5FD03005B4786 /* BonRegex.swift */; };
 		83F88C471CC60C9A005B4786 /* BonConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F88C461CC60C9A005B4786 /* BonConfig.swift */; };
@@ -46,11 +46,9 @@
 		831CCAD41CC36E4200DEF69E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		831CCAD51CC36E4200DEF69E /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
 		831CCADA1CC36F0B00DEF69E /* BIT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIT.swift; sourceTree = "<group>"; };
-		831E373D1CC53BA000B2F38A /* BonNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonNetwork.swift; sourceTree = "<group>"; };
-		836276371CC627380010D34B /* RemaingDataRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemaingDataRateViewController.swift; sourceTree = "<group>"; };
+		836276371CC627380010D34B /* UsedDataRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsedDataRateViewController.swift; sourceTree = "<group>"; };
 		836276391CC62CF40010D34B /* WaveLoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveLoadingIndicator.swift; sourceTree = "<group>"; };
-		836276411CC65A180010D34B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
-		836276441CC71A2A0010D34B /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		836276441CC71A2A0010D34B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		836276471CC71A420010D34B /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		8362764B1CC71B4F0010D34B /* UIColor+Bon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Bon.swift"; sourceTree = "<group>"; };
 		8362764E1CC72F370010D34B /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -58,10 +56,12 @@
 		8368215D1CC4F5D7004C43C1 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		836821641CC502A3004C43C1 /* String+Bon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Bon.swift"; sourceTree = "<group>"; };
 		838150A11CCA73F1001B7009 /* NSDate+Bon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Bon.swift"; sourceTree = "<group>"; };
-		838150A41CCA7705001B7009 /* TimeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeViewController.swift; sourceTree = "<group>"; };
-		838150A81CCA7AFA001B7009 /* NumberMorphView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NumberMorphView.framework; path = Carthage/Build/iOS/NumberMorphView.framework; sourceTree = "<group>"; };
+		838150A41CCA7705001B7009 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		83C5F9F51CC92B3C00183D93 /* BonNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonNavigationController.swift; sourceTree = "<group>"; };
 		83C5F9FB1CC93FEE00183D93 /* UILabel+Bon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Bon.swift"; sourceTree = "<group>"; };
+		83F62AE61CCCD16500484E60 /* BonNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonNetwork.swift; sourceTree = "<group>"; };
+		83F62AEA1CCCF31E00484E60 /* UIButton+Bon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Bon.swift"; sourceTree = "<group>"; };
+		83F62AEC1CCD196F00484E60 /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		83F88C421CC5FAFD005B4786 /* BonDelay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonDelay.swift; sourceTree = "<group>"; };
 		83F88C441CC5FD03005B4786 /* BonRegex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonRegex.swift; sourceTree = "<group>"; };
 		83F88C461CC60C9A005B4786 /* BonConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BonConfig.swift; sourceTree = "<group>"; };
@@ -73,8 +73,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				838150A91CCA7AFA001B7009 /* NumberMorphView.framework in Frameworks */,
-				836276421CC65A180010D34B /* SwiftyJSON.framework in Frameworks */,
 				831CCAD61CC36E4200DEF69E /* Alamofire.framework in Frameworks */,
 				831CCAD71CC36E4200DEF69E /* CryptoSwift.framework in Frameworks */,
 			);
@@ -107,6 +105,7 @@
 				836821661CC50AF5004C43C1 /* Configs */,
 				836821591CC4F376004C43C1 /* Services */,
 				836821631CC50277004C43C1 /* Extensions */,
+				83347F2A1CD5CEB800A020E2 /* Views */,
 				8368215A1CC4F3C0004C43C1 /* ViewControllers */,
 				831CCAC91CC36AD100DEF69E /* Assets.xcassets */,
 				836821611CC4F7B3004C43C1 /* Supporting Files */,
@@ -119,12 +118,17 @@
 			isa = PBXGroup;
 			children = (
 				831CCAD41CC36E4200DEF69E /* Alamofire.framework */,
-				836276411CC65A180010D34B /* SwiftyJSON.framework */,
-				838150A81CCA7AFA001B7009 /* NumberMorphView.framework */,
 				831CCAD51CC36E4200DEF69E /* CryptoSwift.framework */,
 			);
 			name = Frameworks;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		83347F2A1CD5CEB800A020E2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		834CFD4F1CCA099300969483 /* Navigation */ = {
@@ -162,7 +166,8 @@
 		836276461CC71A300010D34B /* Setting */ = {
 			isa = PBXGroup;
 			children = (
-				836276441CC71A2A0010D34B /* SettingViewController.swift */,
+				836276441CC71A2A0010D34B /* SettingsViewController.swift */,
+				83F62AEC1CCD196F00484E60 /* Settings.storyboard */,
 			);
 			name = Setting;
 			sourceTree = "<group>";
@@ -178,7 +183,7 @@
 		8362764D1CC72CF00010D34B /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				836276371CC627380010D34B /* RemaingDataRateViewController.swift */,
+				836276371CC627380010D34B /* UsedDataRateViewController.swift */,
 				8362763F1CC62D060010D34B /* WaveLoadingView */,
 			);
 			name = Data;
@@ -199,7 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				831CCADA1CC36F0B00DEF69E /* BIT.swift */,
-				831E373D1CC53BA000B2F38A /* BonNetwork.swift */,
+				83F62AE61CCCD16500484E60 /* BonNetwork.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -210,7 +215,7 @@
 				834CFD4F1CCA099300969483 /* Navigation */,
 				836276431CC68C1D0010D34B /* Login */,
 				8362764D1CC72CF00010D34B /* Data */,
-				838150A31CCA76D2001B7009 /* UsedTime */,
+				838150A31CCA76D2001B7009 /* Info */,
 				836276401CC653260010D34B /* Profile */,
 				836276461CC71A300010D34B /* Setting */,
 				836276491CC71A520010D34B /* About */,
@@ -243,6 +248,7 @@
 				8362764B1CC71B4F0010D34B /* UIColor+Bon.swift */,
 				83C5F9FB1CC93FEE00183D93 /* UILabel+Bon.swift */,
 				838150A11CCA73F1001B7009 /* NSDate+Bon.swift */,
+				83F62AEA1CCCF31E00484E60 /* UIButton+Bon.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -255,12 +261,12 @@
 			name = Configs;
 			sourceTree = "<group>";
 		};
-		838150A31CCA76D2001B7009 /* UsedTime */ = {
+		838150A31CCA76D2001B7009 /* Info */ = {
 			isa = PBXGroup;
 			children = (
-				838150A41CCA7705001B7009 /* TimeViewController.swift */,
+				838150A41CCA7705001B7009 /* InfoViewController.swift */,
 			);
-			name = UsedTime;
+			name = Info;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +337,7 @@
 				8368215E1CC4F5D7004C43C1 /* Main.storyboard in Resources */,
 				831CCACD1CC36AD100DEF69E /* LaunchScreen.storyboard in Resources */,
 				831CCACA1CC36AD100DEF69E /* Assets.xcassets in Resources */,
+				83F62AED1CCD196F00484E60 /* Settings.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,8 +352,6 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/CryptoSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/NumberMorphView.framework",
 			);
 			outputPaths = (
 			);
@@ -362,18 +367,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				83F88C4D1CC610F5005B4786 /* BonUserDefaults.swift in Sources */,
-				838150A51CCA7705001B7009 /* TimeViewController.swift in Sources */,
-				836276381CC627380010D34B /* RemaingDataRateViewController.swift in Sources */,
+				83F62AEB1CCCF31E00484E60 /* UIButton+Bon.swift in Sources */,
+				838150A51CCA7705001B7009 /* InfoViewController.swift in Sources */,
+				836276381CC627380010D34B /* UsedDataRateViewController.swift in Sources */,
 				831CCAC51CC36AD100DEF69E /* LoginViewController.swift in Sources */,
 				8362764C1CC71B4F0010D34B /* UIColor+Bon.swift in Sources */,
-				836276451CC71A2A0010D34B /* SettingViewController.swift in Sources */,
+				836276451CC71A2A0010D34B /* SettingsViewController.swift in Sources */,
 				8362763C1CC62CF40010D34B /* WaveLoadingIndicator.swift in Sources */,
 				8362764F1CC72F370010D34B /* ProfileViewController.swift in Sources */,
 				83F88C471CC60C9A005B4786 /* BonConfig.swift in Sources */,
 				8368215C1CC4F4F3004C43C1 /* BonAlert.swift in Sources */,
 				838150A21CCA73F1001B7009 /* NSDate+Bon.swift in Sources */,
 				831CCAC31CC36AD100DEF69E /* AppDelegate.swift in Sources */,
-				831E373E1CC53BA000B2F38A /* BonNetwork.swift in Sources */,
+				83F62AE71CCCD16500484E60 /* BonNetwork.swift in Sources */,
 				83C5F9FC1CC93FEE00183D93 /* UILabel+Bon.swift in Sources */,
 				83F88C451CC5FD03005B4786 /* BonRegex.swift in Sources */,
 				836276481CC71A420010D34B /* AboutViewController.swift in Sources */,

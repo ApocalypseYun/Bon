@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Settings View Controller-->
+        <scene sceneID="wtG-Yq-fnT">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" id="lWP-jK-Pb8" customClass="SettingsViewController" customModule="Bon" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GaD-NO-EzM"/>
+                        <viewControllerLayoutGuide type="bottom" id="WT0-sR-4Ni"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mMD-rC-6hC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9VO-xA-mvQ">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" id="HiT-GD-bxh">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HiT-GD-bxh" id="459-T1-du3">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="9VO-xA-mvQ" secondAttribute="trailing" constant="-20" id="8KN-ck-lmE"/>
+                            <constraint firstItem="9VO-xA-mvQ" firstAttribute="leading" secondItem="mMD-rC-6hC" secondAttribute="leading" id="KAl-IB-mBu"/>
+                            <constraint firstItem="9VO-xA-mvQ" firstAttribute="centerX" secondItem="mMD-rC-6hC" secondAttribute="centerX" id="U6t-N4-1Nw"/>
+                            <constraint firstItem="9VO-xA-mvQ" firstAttribute="bottom" secondItem="WT0-sR-4Ni" secondAttribute="top" id="dQE-pD-zBB"/>
+                            <constraint firstItem="9VO-xA-mvQ" firstAttribute="centerY" secondItem="mMD-rC-6hC" secondAttribute="centerY" id="rE6-30-tAW"/>
+                            <constraint firstItem="WT0-sR-4Ni" firstAttribute="top" secondItem="9VO-xA-mvQ" secondAttribute="bottom" id="xSi-34-flG"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="8KN-ck-lmE"/>
+                                <exclude reference="xSi-34-flG"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="settingsTableView" destination="9VO-xA-mvQ" id="iQ1-Z7-lZ6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zyU-ce-Ayp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="936" y="-340"/>
+        </scene>
+    </scenes>
+</document>
