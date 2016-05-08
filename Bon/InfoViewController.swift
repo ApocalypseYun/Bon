@@ -10,12 +10,11 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
-    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var usedDataLabel: UILabel!
     @IBOutlet weak var usedTimeLabel: UILabel!
     @IBOutlet weak var balanceLabel: UILabel!
-    @IBOutlet weak var remainingTimeLabel: UILabel!
+    @IBOutlet weak var dailyAvailableDataLabel: UILabel!
     
     var digit = 0;
     
@@ -28,7 +27,7 @@ class InfoViewController: UIViewController {
     var usedData: Double = 0.0 {
         didSet {
             usedDataLabel.text = formatData(usedData)
-            usedData = usedData / (1024 * 1024 * 1024)
+            //usedData = usedData / (1024 * 1024 * 1024)
         }
     }
     
@@ -45,9 +44,14 @@ class InfoViewController: UIViewController {
         }
     }
     
+    var dailyAvailableData: Double = 0.0 {
+        didSet {
+            dailyAvailableDataLabel.text = formatData(dailyAvailableData)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        timeLabel.hidden = true
         showUserInfo()
         NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(self.updateTime), userInfo: nil, repeats: true);
     }
@@ -87,10 +91,10 @@ class InfoViewController: UIViewController {
     
     func updateTime() {
         seconds = seconds + 1
-        let date = NSDate()
-        let formatter = NSDateFormatter()
-        formatter.timeStyle = .MediumStyle
-        timeLabel.text = formatter.stringFromDate(date)
+//        let date = NSDate()
+//        let formatter = NSDateFormatter()
+//        formatter.timeStyle = .MediumStyle
+//        timeLabel.text = formatter.stringFromDate(date)
     }
     
     func showUserInfo() {
@@ -98,6 +102,8 @@ class InfoViewController: UIViewController {
         usedData = BonUserDefaults.usedData
         seconds = BonUserDefaults.seconds
         balance = BonUserDefaults.balance
+        
+        dailyAvailableData = getDailyAvailableData()
     }
     
     func formatData(byte: Double) -> String {
@@ -123,6 +129,46 @@ class InfoViewController: UIViewController {
         let usedTime = hour + ":" + minute + ":" + second
         return usedTime
     }
-
+    
+    func getDailyAvailableData() -> Double {
+        let remainingDaysOfCurrentMonth = getRemainingDaysOfCurrentMonth()
+        print(remainingDaysOfCurrentMonth)
+        
+        let availableData = balance.MegabyteToByte() - usedData
+        print(balance.MegabyteToByte())
+        print(usedData)
+        print(availableData)
+        
+        let dailyAvailableData = availableData / remainingDaysOfCurrentMonth
+        print(dailyAvailableData)
+        return dailyAvailableData
+    }
+    
+    func getRemainingDaysOfCurrentMonth() -> Double {
+        
+        var date = NSDate()
+        let calendar = NSCalendar.currentCalendar()
+        let components = calendar.components([.Day , .Month , .Year], fromDate: date)
+        
+        let year =  components.year
+        let month = components.month
+        
+        let day = components.day
+        print(day)
+        
+        let dateComponents = NSDateComponents()
+        dateComponents.year = year
+        dateComponents.month = month
+        
+        date = calendar.dateFromComponents(dateComponents)!
+        
+        let range = calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: date)
+        let numDays = range.length
+        
+        print(numDays)
+        
+        let remainingDaysOfCurrentMonth = numDays - day
+        return Double(remainingDaysOfCurrentMonth)
+    }
 }
 

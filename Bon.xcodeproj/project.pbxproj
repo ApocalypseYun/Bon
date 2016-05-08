@@ -14,6 +14,7 @@
 		831CCAD61CC36E4200DEF69E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831CCAD41CC36E4200DEF69E /* Alamofire.framework */; };
 		831CCAD71CC36E4200DEF69E /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831CCAD51CC36E4200DEF69E /* CryptoSwift.framework */; };
 		831CCADB1CC36F0B00DEF69E /* BIT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CCADA1CC36F0B00DEF69E /* BIT.swift */; };
+		834783801CDE2A03001FE820 /* Double+Bon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8347837F1CDE2A03001FE820 /* Double+Bon.swift */; };
 		836276381CC627380010D34B /* UsedDataRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836276371CC627380010D34B /* UsedDataRateViewController.swift */; };
 		8362763C1CC62CF40010D34B /* WaveLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836276391CC62CF40010D34B /* WaveLoadingIndicator.swift */; };
 		836276451CC71A2A0010D34B /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836276441CC71A2A0010D34B /* SettingsViewController.swift */; };
@@ -46,6 +47,7 @@
 		831CCAD41CC36E4200DEF69E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		831CCAD51CC36E4200DEF69E /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
 		831CCADA1CC36F0B00DEF69E /* BIT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIT.swift; sourceTree = "<group>"; };
+		8347837F1CDE2A03001FE820 /* Double+Bon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Bon.swift"; sourceTree = "<group>"; };
 		836276371CC627380010D34B /* UsedDataRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsedDataRateViewController.swift; sourceTree = "<group>"; };
 		836276391CC62CF40010D34B /* WaveLoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveLoadingIndicator.swift; sourceTree = "<group>"; };
 		836276441CC71A2A0010D34B /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 		836821631CC50277004C43C1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				8347837F1CDE2A03001FE820 /* Double+Bon.swift */,
 				836821641CC502A3004C43C1 /* String+Bon.swift */,
 				8362764B1CC71B4F0010D34B /* UIColor+Bon.swift */,
 				83C5F9FB1CC93FEE00183D93 /* UILabel+Bon.swift */,
@@ -367,6 +370,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				83F88C4D1CC610F5005B4786 /* BonUserDefaults.swift in Sources */,
+				834783801CDE2A03001FE820 /* Double+Bon.swift in Sources */,
 				83F62AEB1CCCF31E00484E60 /* UIButton+Bon.swift in Sources */,
 				838150A51CCA7705001B7009 /* InfoViewController.swift in Sources */,
 				836276381CC627380010D34B /* UsedDataRateViewController.swift in Sources */,

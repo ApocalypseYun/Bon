@@ -66,12 +66,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fQC-vR-VNn">
                                 <rect key="frame" x="154" y="125" width="293" height="350"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D02-Dm-f6Q">
-                                        <rect key="frame" x="93" y="160" width="107" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRi-Oe-91L">
                                         <rect key="frame" x="0.0" y="69" width="285" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -105,10 +99,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="D02-Dm-f6Q" firstAttribute="centerY" secondItem="fQC-vR-VNn" secondAttribute="centerY" id="PTc-eF-X3G"/>
                                     <constraint firstAttribute="height" constant="350" id="WJ9-HD-j5w"/>
                                     <constraint firstAttribute="width" constant="293" id="luu-j7-hNB"/>
-                                    <constraint firstItem="D02-Dm-f6Q" firstAttribute="centerX" secondItem="fQC-vR-VNn" secondAttribute="centerX" id="rZ4-5J-4Yl"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -123,8 +115,7 @@
                     <navigationItem key="navigationItem" title="Plane" id="wrC-0R-VMY"/>
                     <connections>
                         <outlet property="balanceLabel" destination="UiW-uC-6zE" id="bG9-yu-UxJ"/>
-                        <outlet property="remainingTimeLabel" destination="YGL-fw-RvZ" id="uwy-o8-LCv"/>
-                        <outlet property="timeLabel" destination="D02-Dm-f6Q" id="qON-NO-YQN"/>
+                        <outlet property="dailyAvailableDataLabel" destination="YGL-fw-RvZ" id="VHu-k9-gFh"/>
                         <outlet property="usedDataLabel" destination="x3O-8O-YbU" id="KzJ-4i-KRn"/>
                         <outlet property="usedTimeLabel" destination="7sr-nT-LsX" id="nLS-Ae-s3R"/>
                         <outlet property="usernameLabel" destination="bRi-Oe-91L" id="3aB-c9-e07"/>
