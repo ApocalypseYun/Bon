@@ -22,7 +22,7 @@ class UsedDataRateViewController: UIViewController {
     
     var usedData: Double = 0.0 {
         didSet {
-            usedDataLabel.text = formatData(usedData)
+            usedDataLabel.text = BonFormat.formatData(usedData)
             usedData = usedData / (1024 * 1024 * 1024)
         }
     }
@@ -42,21 +42,6 @@ class UsedDataRateViewController: UIViewController {
         let usedDataRate = usedData / balance
         waveLoadingIndicator.progress = usedDataRate <= 1 ? usedDataRate : 1
         
-    }
-    
-    func formatData(byte: Double) -> String {
-        
-        if byte > 1024 * 1024 {
-            let megabyte = String(format: "%.2f", byte / (1024 * 1024)) + "M"
-            print(megabyte)
-            return megabyte
-        } else if byte > 1024 {
-            let kilobyte = String(format: "%.2f", byte / 1024) + "K"
-            return kilobyte
-        } else {
-            let byte = String(format: "%.2f", byte) + "b"
-            return byte
-        }
     }
     
 }

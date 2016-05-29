@@ -10,11 +10,19 @@ import Foundation
 
 extension Double {
     
+    func byteToKilobyte() -> Double {
+        return self / (1024)
+    }
+    
     func byteToMegabyte() -> Double {
+        return self / (1024 * 1024)
+    }
+    
+    func byteToGigabyte() -> Double {
         return self / (1024 * 1024 * 1024)
     }
     
-    func MegabyteToByte() -> Double {
+    func gigabyteToByte() -> Double {
         return self * (1024 * 1024 * 1024)
     }
     

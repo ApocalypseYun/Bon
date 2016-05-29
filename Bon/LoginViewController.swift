@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Alamofire
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -192,8 +191,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         BonNetwork.post(parameters, success: { (value) in
             print(value)
             if value.containsString("login_ok,") {
-                self.getOnlineInfo()
                 delay(1) {
+                    self.getOnlineInfo()
                     self.loadingView.stopAnimating()
                     self.loginButton.selected = false
                     self.performSegueWithIdentifier("Login", sender: self)
@@ -202,6 +201,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.loadingView.stopAnimating()
                 self.loginButton.selected = false
                 BonAlert.alertSorry(message: "Login error", inViewController: self)
+                // E2616: Arrearage users.(已欠费)
             }
             }) { (error) in
                 self.loadingView.stopAnimating()
@@ -289,15 +289,4 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         //SUCCESS: 0,2656,1.53,D0331191353C,1120141755,0
     }
     
-//    func formatTime(seconds: Int) {
-//        let date = NSDate(timeIntervalSinceReferenceDate: NSTimeInterval(seconds)) // it means give me the time that happens after January,1st, 2001, 12:00 am by zero seconds
-//        print(date)
-//        let formatter = NSDateFormatter()
-//        formatter.timeStyle = .ShortStyle
-//        formatter.timeZone = NSTimeZone(name: "UTC")
-//        let usedTime = formatter.stringFromDate(date)
-//        BonUserDefaults.usedTime = usedTime
-//        print(usedTime) //2001-01-01 00:00:00
-//    }
-
 }

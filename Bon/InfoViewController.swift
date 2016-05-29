@@ -26,7 +26,7 @@ class InfoViewController: UIViewController {
     
     var usedData: Double = 0.0 {
         didSet {
-            usedDataLabel.text = formatData(usedData)
+            usedDataLabel.text = BonFormat.formatData(usedData)
             //usedData = usedData / (1024 * 1024 * 1024)
         }
     }
@@ -39,14 +39,14 @@ class InfoViewController: UIViewController {
     
     var seconds: Int = 0 {
         didSet {
-            let usedTime = formatTime(seconds)
+            let usedTime = BonFormat.formatTime(seconds)
             usedTimeLabel.text = usedTime
         }
     }
     
     var dailyAvailableData: Double = 0.0 {
         didSet {
-            dailyAvailableDataLabel.text = formatData(dailyAvailableData)
+            dailyAvailableDataLabel.text = BonFormat.formatData(dailyAvailableData)
         }
     }
     
@@ -103,72 +103,8 @@ class InfoViewController: UIViewController {
         seconds = BonUserDefaults.seconds
         balance = BonUserDefaults.balance
         
-        dailyAvailableData = getDailyAvailableData()
+        dailyAvailableData = BonFormat.getDailyAvailableData(balance, usedData: usedData)
     }
     
-    func formatData(byte: Double) -> String {
-        
-        if byte > 1024 * 1024 {
-            let megabyte = String(format: "%.2f", byte / (1024 * 1024)) + "M"
-            return megabyte
-        } else if byte > 1024 {
-            let kilobyte = String(format: "%.2f", byte / 1024) + "K"
-            return kilobyte
-        } else {
-            let byte = String(format: "%.2f", byte) + "b"
-            return byte
-        }
-    }
-    
-    func formatTime(seconds: Int) -> String {
-        
-        let hour = String(format: "%02d", seconds / 3600)
-        let minute = String(format: "%02d", (seconds % 3600) / 60)
-        let second = String(format: "%02d", seconds % 3600 % 60)
-        
-        let usedTime = hour + ":" + minute + ":" + second
-        return usedTime
-    }
-    
-    func getDailyAvailableData() -> Double {
-        let remainingDaysOfCurrentMonth = getRemainingDaysOfCurrentMonth()
-        print(remainingDaysOfCurrentMonth)
-        
-        let availableData = balance.MegabyteToByte() - usedData
-        print(balance.MegabyteToByte())
-        print(usedData)
-        print(availableData)
-        
-        let dailyAvailableData = availableData / remainingDaysOfCurrentMonth
-        print(dailyAvailableData)
-        return dailyAvailableData
-    }
-    
-    func getRemainingDaysOfCurrentMonth() -> Double {
-        
-        var date = NSDate()
-        let calendar = NSCalendar.currentCalendar()
-        let components = calendar.components([.Day , .Month , .Year], fromDate: date)
-        
-        let year =  components.year
-        let month = components.month
-        
-        let day = components.day
-        print(day)
-        
-        let dateComponents = NSDateComponents()
-        dateComponents.year = year
-        dateComponents.month = month
-        
-        date = calendar.dateFromComponents(dateComponents)!
-        
-        let range = calendar.rangeOfUnit(.Day, inUnit: .Month, forDate: date)
-        let numDays = range.length
-        
-        print(numDays)
-        
-        let remainingDaysOfCurrentMonth = numDays - day
-        return Double(remainingDaysOfCurrentMonth)
-    }
 }
 

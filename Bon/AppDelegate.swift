@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //UILabel.appearance().tintColor = UIColor.bonTintColor()
 //        UILabel.appearance().font = UIFont(name: "Avenir Book", size: 18)
         UINavigationBar.appearance().titleTextAttributes = [
-            NSFontAttributeName: UIFont(name: "Avenir Book", size: 18)!,
+            NSFontAttributeName: UIFont(name: "AvenirNext-DemiBold", size: 17)!,
             NSForegroundColorAttributeName: UIColor.whiteColor()
         ]
         //UINavigationItem.
