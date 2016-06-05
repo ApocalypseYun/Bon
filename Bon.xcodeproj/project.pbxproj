@@ -12,8 +12,10 @@
 		831CCACA1CC36AD100DEF69E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 831CCAC91CC36AD100DEF69E /* Assets.xcassets */; };
 		831CCACD1CC36AD100DEF69E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831CCACB1CC36AD100DEF69E /* LaunchScreen.storyboard */; };
 		831CCAD61CC36E4200DEF69E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831CCAD41CC36E4200DEF69E /* Alamofire.framework */; };
-		831CCAD71CC36E4200DEF69E /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831CCAD51CC36E4200DEF69E /* CryptoSwift.framework */; };
 		831CCADB1CC36F0B00DEF69E /* BIT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CCADA1CC36F0B00DEF69E /* BIT.swift */; };
+		8337B9D01D03F10300173E44 /* Fuzi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8337B9CF1D03F10300173E44 /* Fuzi.framework */; };
+		8337B9D61D04246900173E44 /* SelfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337B9D51D04246900173E44 /* SelfServiceViewController.swift */; };
+		8337B9D91D042BA500173E44 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8337B9D81D042BA500173E44 /* AlamofireImage.framework */; };
 		834783801CDE2A03001FE820 /* Double+Bon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8347837F1CDE2A03001FE820 /* Double+Bon.swift */; };
 		836276381CC627380010D34B /* UsedDataRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836276371CC627380010D34B /* UsedDataRateViewController.swift */; };
 		8362763C1CC62CF40010D34B /* WaveLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836276391CC62CF40010D34B /* WaveLoadingIndicator.swift */; };
@@ -46,8 +48,10 @@
 		831CCACC1CC36AD100DEF69E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		831CCACE1CC36AD100DEF69E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		831CCAD41CC36E4200DEF69E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
-		831CCAD51CC36E4200DEF69E /* CryptoSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CryptoSwift.framework; path = Carthage/Build/iOS/CryptoSwift.framework; sourceTree = "<group>"; };
 		831CCADA1CC36F0B00DEF69E /* BIT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIT.swift; sourceTree = "<group>"; };
+		8337B9CF1D03F10300173E44 /* Fuzi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fuzi.framework; path = Carthage/Build/iOS/Fuzi.framework; sourceTree = "<group>"; };
+		8337B9D51D04246900173E44 /* SelfServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfServiceViewController.swift; sourceTree = "<group>"; };
+		8337B9D81D042BA500173E44 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		8347837F1CDE2A03001FE820 /* Double+Bon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Bon.swift"; sourceTree = "<group>"; };
 		836276371CC627380010D34B /* UsedDataRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsedDataRateViewController.swift; sourceTree = "<group>"; };
 		836276391CC62CF40010D34B /* WaveLoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveLoadingIndicator.swift; sourceTree = "<group>"; };
@@ -77,8 +81,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8337B9D91D042BA500173E44 /* AlamofireImage.framework in Frameworks */,
+				8337B9D01D03F10300173E44 /* Fuzi.framework in Frameworks */,
 				831CCAD61CC36E4200DEF69E /* Alamofire.framework in Frameworks */,
-				831CCAD71CC36E4200DEF69E /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +93,7 @@
 		831CCAB61CC36AD100DEF69E = {
 			isa = PBXGroup;
 			children = (
+				8337B9D81D042BA500173E44 /* AlamofireImage.framework */,
 				831CCAC11CC36AD100DEF69E /* Bon */,
 				831CCAC01CC36AD100DEF69E /* Products */,
 			);
@@ -121,8 +127,8 @@
 		831CCAD91CC36EC800DEF69E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8337B9CF1D03F10300173E44 /* Fuzi.framework */,
 				831CCAD41CC36E4200DEF69E /* Alamofire.framework */,
-				831CCAD51CC36E4200DEF69E /* CryptoSwift.framework */,
 			);
 			name = Frameworks;
 			path = ..;
@@ -133,6 +139,14 @@
 			children = (
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		8337B9D71D04247200173E44 /* Self-Service */ = {
+			isa = PBXGroup;
+			children = (
+				8337B9D51D04246900173E44 /* SelfServiceViewController.swift */,
+			);
+			name = "Self-Service";
 			sourceTree = "<group>";
 		};
 		834CFD4F1CCA099300969483 /* Navigation */ = {
@@ -220,6 +234,7 @@
 				834CFD4F1CCA099300969483 /* Navigation */,
 				836276431CC68C1D0010D34B /* Login */,
 				8362764D1CC72CF00010D34B /* Data */,
+				8337B9D71D04247200173E44 /* Self-Service */,
 				838150A31CCA76D2001B7009 /* Info */,
 				836276401CC653260010D34B /* Profile */,
 				836276461CC71A300010D34B /* Setting */,
@@ -357,7 +372,8 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CryptoSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Fuzi.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 			);
 			outputPaths = (
 			);
@@ -376,6 +392,7 @@
 				834783801CDE2A03001FE820 /* Double+Bon.swift in Sources */,
 				83F62AEB1CCCF31E00484E60 /* UIButton+Bon.swift in Sources */,
 				838150A51CCA7705001B7009 /* InfoViewController.swift in Sources */,
+				8337B9D61D04246900173E44 /* SelfServiceViewController.swift in Sources */,
 				836276381CC627380010D34B /* UsedDataRateViewController.swift in Sources */,
 				831CCAC51CC36AD100DEF69E /* LoginViewController.swift in Sources */,
 				8362764C1CC71B4F0010D34B /* UIColor+Bon.swift in Sources */,
@@ -449,6 +466,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -489,6 +507,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;

@@ -7,15 +7,14 @@
 //
 
 import Foundation
-import CryptoSwift
 
 extension String {
-    var MD5: String {
-        let md5 = self.md5()
-        let start =  md5.startIndex.advancedBy(8)
-        let end = md5.endIndex.advancedBy(-8)
-        let range = Range<String.Index>(start..<end)
-        
-        return md5.substringWithRange(range)
-    }
+//    var MD5: String {
+//        let md5 = self.md5()
+//        let start =  md5.startIndex.advancedBy(8)
+//        let end = md5.endIndex.advancedBy(-8)
+//        let range = Range<String.Index>(start..<end)
+//        
+//        return md5.substringWithRange(range)
+//    }
 }

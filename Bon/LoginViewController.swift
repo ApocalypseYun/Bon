@@ -148,7 +148,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func onHelpCenterButton(sender: AnyObject) {
-        let url : NSURL = NSURL(string: BIT.URL.HelpCenter)!
+        let url : NSURL = NSURL(string: BIT.URL.SelfService)!
         if UIApplication.sharedApplication().canOpenURL(url) {
             UIApplication.sharedApplication().openURL(url)
         }

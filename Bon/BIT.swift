@@ -21,7 +21,7 @@ class BIT {
     
     struct URL {
         static let AuthActionURL = "http://10.0.0.55:801/include/auth_action.php"
-        static let HelpCenter = "http://10.0.0.55:8800"
+        static let SelfService = "http://10.0.0.55:8800"
         static let DoLoginURL = "http://10.0.0.55/cgi-bin/do_login"
         static let KeepLiveURL = "http://10.0.0.55/cgi-bin/keeplive"
         static let DoLogoutURL = "http://10.0.0.55/cgi-bin/do_logout"
