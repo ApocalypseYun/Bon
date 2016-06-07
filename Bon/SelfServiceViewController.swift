@@ -44,7 +44,15 @@ class SelfServiceViewController: UIViewController {
     var online: [Online] = []
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         tableView.hidden = true
+        //fetchVerifyCodeImage()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
         fetchVerifyCodeImage()
     }
     
@@ -82,6 +90,10 @@ class SelfServiceViewController: UIViewController {
                     
             }
         }
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        verifyCodeTextField.resignFirstResponder()
     }
     
     @IBAction func loginButtonTapped(sender: AnyObject) {
