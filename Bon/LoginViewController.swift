@@ -128,12 +128,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         //loginButton.tintColor = UIColor.bonTintColor()
         
         self.login()
-//        delay(2.0) { 
-//            //self.loadingView.stopAnimating()
-//            //self.loginButton.selected = false
-//            //self.loginButton.tintColor = UIColor.whiteColor()
-//            //self.login()
-//        }
     }
     
     @IBAction func onLogoutButton(sender: AnyObject) {
@@ -209,15 +203,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 BonAlert.alertSorry(message: "The request timed out.", inViewController: self)
         }
     }
-//                //let getUserInfoQueue = dispatch_queue_create("get_user_info_queue", nil)
-//                
-//                //self.getUserInfo()
-////                dispatch_async(getUserInfoQueue, {
-////                    self.getUserInfo()
-////                    
-////                    dispatch_async(dispatch_get_main_queue(), { })
-////                })
-    
     
     // MARK : - logout
     
@@ -253,12 +238,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             //if value.containsString("logout_ok")
         }
         
-        ///^login_ok,/
-        //action=login&username=1120141755&password=039026&ac_id=1&user_ip=&nas_ip=&user_mac=&save_me=1&ajax=1
-
-        
-        // "582023371"
-        // "691918"
     }
     
     // MARK : - get online info
@@ -267,7 +246,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         let parameters = [
             "action": "get_online_info",
-            //"user_ip": "10.194.182.127"
         ]
         
         BonNetwork.post(parameters) { (value) in
