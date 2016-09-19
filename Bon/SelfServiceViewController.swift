@@ -46,11 +46,11 @@ class SelfServiceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.hidden = true
+        tableView.isHidden = true
         //fetchVerifyCodeImage()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         fetchVerifyCodeImage()
@@ -62,7 +62,7 @@ class SelfServiceViewController: UIViewController {
         
         BonNetwork.get(BIT.URL.SelfService) { html in
             do {
-                let doc = try HTMLDocument(string: html, encoding: NSUTF8StringEncoding)
+                let doc = try HTMLDocument(string: html, encoding: String.Encoding.utf8)
                 let xpath = "/html/body//img[@id]"
                 
                 if let imageAnchor = doc.firstChild(xpath: xpath) {
@@ -80,7 +80,7 @@ class SelfServiceViewController: UIViewController {
             }
             
             print(imageURL)
-            Alamofire.request(.GET, imageURL)
+            Alamofire.request(imageURL, method: .get)
                 .responseImage { (response) in
                     //print(response)
                     if let image = response.result.value {
@@ -92,11 +92,11 @@ class SelfServiceViewController: UIViewController {
         }
     }
     
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         verifyCodeTextField.resignFirstResponder()
     }
     
-    @IBAction func loginButtonTapped(sender: AnyObject) {
+    @IBAction func loginButtonTapped(_ sender: AnyObject) {
         
         online = []
         
@@ -110,10 +110,10 @@ class SelfServiceViewController: UIViewController {
             "login-button": ""
         ]
         
-        Alamofire.request(.POST, "http://10.0.0.55:8800", parameters: parameters)
+        Alamofire.request("http://10.0.0.55:8800", method: .post, parameters: parameters)
             .responseString { html in
                 do {
-                    let doc = try HTMLDocument(string: html.result.value!, encoding: NSUTF8StringEncoding)
+                    let doc = try HTMLDocument(string: html.result.value!, encoding: String.Encoding.utf8)
                     self.onlineNumber = doc.xpath("/html/body//table/tr").count - 4
                     print(self.onlineNumber)
                     
@@ -122,13 +122,13 @@ class SelfServiceViewController: UIViewController {
                         let loginTime = doc.xpath("/html/body//table/tr[\(index)]/td[4]/text()")
                         let id = doc.firstChild(xpath: "/html/body//table/tr[\(index)]/td[6]/a")!
                         print(id["id"]!)
-                        print(ip[0]!)
-                        print(loginTime[0]!)
-                        self.online.append(Online(ip: ip[0]!.stringValue, time: loginTime[0]!.stringValue, id: id["id"]!))
+                        print(ip[0])
+                        print(loginTime[0])
+                        self.online.append(Online(ip: ip[0].stringValue, time: loginTime[0].stringValue, id: id["id"]!))
                     }
                     self.tableView.reloadData()
-                    UIView.animateWithDuration(0.5, animations: {
-                        self.tableView.hidden = false
+                    UIView.animate(withDuration: 0.5, animations: {
+                        self.tableView.isHidden = false
                     })
                     
 
@@ -140,7 +140,7 @@ class SelfServiceViewController: UIViewController {
 
     }
     
-    @IBAction func refreshButtonTapped(sender: AnyObject) {
+    @IBAction func refreshButtonTapped(_ sender: AnyObject) {
         fetchVerifyCodeImage()
     }
     
@@ -148,30 +148,30 @@ class SelfServiceViewController: UIViewController {
 
 extension SelfServiceViewController: UITableViewDataSource, UITableViewDelegate {
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(online.count)
         return online.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("info") as UITableViewCell!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "info") as UITableViewCell!
         
-        let ipLabel = cell.viewWithTag(101) as! UILabel
-        ipLabel.text = online[indexPath.row].ip
+        let ipLabel = cell?.viewWithTag(101) as! UILabel
+        ipLabel.text = online[(indexPath as NSIndexPath).row].ip
         
-        let timeLabel = cell.viewWithTag(102) as! UILabel
-        timeLabel.text = online[indexPath.row].time
+        let timeLabel = cell?.viewWithTag(102) as! UILabel
+        timeLabel.text = online[(indexPath as NSIndexPath).row].time
         
-        return cell
+        return cell!
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let parameters = [
-            "id": online[indexPath.row].id
+            "id": online[(indexPath as NSIndexPath).row].id
         ]
         
-        Alamofire.request(.POST, "http://10.0.0.55:8800/home/base/drop", parameters: parameters)
+        Alamofire.request("http://10.0.0.55:8800/home/base/drop", method: .post, parameters: parameters)
             .responseString { (response) in
             print(response)
         }

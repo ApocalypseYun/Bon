@@ -12,7 +12,7 @@ import AlamofireImage
 
 class BonNetwork: NSObject {
     
-    var alamoFireManager = Alamofire.Manager.sharedInstance
+    //var alamoFireManager = Alamofire.Manager.sharedInstance
     
     /**
      *   login function
@@ -21,16 +21,16 @@ class BonNetwork: NSObject {
      *   success : Request success callback function
      */
     
-    static func post(parameters: [String : AnyObject]?, success: (value: String) -> Void) {
+    static func post(_ parameters: [String : String]?, success: @escaping (_ value: String) -> Void) {
         
         //UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        Alamofire.request(.POST, BIT.URL.AuthActionURL, parameters: parameters)
+        Alamofire.request(BIT.URL.AuthActionURL, method: .post, parameters: parameters)
             .responseString{ response in
                 switch response.result {
-                case .Success(let value):
-                    success(value: value)
+                case .success(let value):
+                    success(value)
                     
-                case .Failure(let error):
+                case .failure(let error):
                     print(error)
                 }
         }
@@ -39,16 +39,16 @@ class BonNetwork: NSObject {
     }
 
     
-    static func post(parameters: [String : AnyObject]?, success: (value: String) -> Void, fail: (error : Any) -> Void) {
+    static func post(_ parameters: [String : String]?, success: @escaping (_ value: String) -> Void, fail: @escaping (_ error : Any) -> Void) {
         
         //UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        Alamofire.request(.POST, BIT.URL.AuthActionURL, parameters: parameters)
+        Alamofire.request(BIT.URL.AuthActionURL, method: .post, parameters: parameters)
             .responseString{ response in
                 switch response.result {
-                case .Success(let value):
-                    success(value: value)
+                case .success(let value):
+                    success(value)
                     
-                case .Failure(let error):
+                case .failure(let error):
                     fail(error: error)
                 }
         }
@@ -56,15 +56,15 @@ class BonNetwork: NSObject {
         
     }
     
-    static func get(URL: String, success: (value: String) -> Void) {
+    static func get(_ URL: String, success: @escaping (_ value: String) -> Void) {
         
-        Alamofire.request(.GET, URL)
+        Alamofire.request(URL, method: .get)
             .responseString{ response in
                 switch response.result {
-                case .Success(let value):
-                    success(value: value)
+                case .success(let value):
+                    success(value)
                     
-                case .Failure(let error):
+                case .failure(let error):
                     print(error)
                 }
         }
@@ -78,15 +78,15 @@ class BonNetwork: NSObject {
      *   success : Request success callback function
      */
     
-    static func getLoginState(success :(value : String) -> Void) {
+    static func getLoginState(_ success :@escaping (_ value : String) -> Void) {
         
-        Alamofire.request(.POST, BIT.URL.RadUserInfoURL)
+        Alamofire.request(BIT.URL.RadUserInfoURL, method: .get)
             .responseString { response in
                 switch response.result {
-                case .Success(let value):
-                    success(value: value)
+                case .success(let value):
+                    success(value)
                     
-                case .Failure(let error):
+                case .failure(let error):
                     print("Request failed with error: \(error)")
                 }
                 

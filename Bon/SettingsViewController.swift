@@ -10,18 +10,18 @@ import UIKit
 
 class SettingsViewController: UIViewController {
     
-    @IBOutlet private weak var settingsTableView: UITableView!
+    @IBOutlet fileprivate weak var settingsTableView: UITableView!
     
-    private let settingsUserCellIdentifier = "SettingsUserCell"
-    private let settingsMoreCellIdentifier = "SettingsMoreCell"
+    fileprivate let settingsUserCellIdentifier = "SettingsUserCell"
+    fileprivate let settingsMoreCellIdentifier = "SettingsMoreCell"
     
-    private var introduction: String {
+    fileprivate var introduction: String {
         get {
             return "No Introduction yet."
         }
     }
     
-    private let moreAnnotations: [[String: String]] = [
+    fileprivate let moreAnnotations: [[String: String]] = [
         [
             "name": NSLocalizedString("Notifications & Privacy", comment: ""),
             "segue": "showNotifications",
@@ -36,7 +36,7 @@ class SettingsViewController: UIViewController {
         ],
         ]
     
-    private let introAttributes = [NSFontAttributeName: BonConfig.BonFont]
+    fileprivate let introAttributes = [NSFontAttributeName: BonConfig.BonFont]
     
     deinit {
         
@@ -44,7 +44,7 @@ class SettingsViewController: UIViewController {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
     }
@@ -60,50 +60,50 @@ class SettingsViewController: UIViewController {
 
 extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     
-    private enum Section: Int {
-        case User = 0
-        case More
+    fileprivate enum Section: Int {
+        case user = 0
+        case more
     }
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case Section.User.rawValue:
+        case Section.user.rawValue:
             return 1
-        case Section.More.rawValue:
+        case Section.more.rawValue:
             return moreAnnotations.count
         default:
             return 0
         }
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        switch indexPath.section {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch (indexPath as NSIndexPath).section {
             
-        case Section.User.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell!
-            cell.textLabel?.text = "User"
-            return cell
+        case Section.user.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as UITableViewCell!
+            cell?.textLabel?.text = "User"
+            return cell!
             
-        case Section.More.rawValue:
-            let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as UITableViewCell!
+        case Section.more.rawValue:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "Cell") as UITableViewCell!
             //let annotation = moreAnnotations[indexPath.row]
             //cell.annotationLabel.text = annotation["name"]
-            cell.textLabel?.text = "hello"
-            return cell
+            cell?.textLabel?.text = "hello"
+            return cell!
             
         default:
             return UITableViewCell()
         }
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        switch indexPath.section {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch (indexPath as NSIndexPath).section {
             
-        case Section.User.rawValue:
+        case Section.user.rawValue:
             
 //            let tableViewWidth = CGRectGetWidth(settingsTableView.bounds)
 //            let introLabelMaxWidth = tableViewWidth - 161
@@ -114,7 +114,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
             
             return 128
             
-        case Section.More.rawValue:
+        case Section.more.rawValue:
             return 60
             
         default:

@@ -13,7 +13,7 @@ class UsedDataRateViewController: UIViewController {
     @IBOutlet weak var usedDataRateImageView: UIImageView!
     
     @IBOutlet weak var usedDataLabel: UILabel!
-    let waveLoadingIndicator: WaveLoadingIndicator = WaveLoadingIndicator(frame: CGRectZero)
+    let waveLoadingIndicator: WaveLoadingIndicator = WaveLoadingIndicator(frame: CGRect.zero)
     
     override func viewDidLoad() {
         //view.backgroundColor = UIColor.whiteColor()
@@ -34,7 +34,7 @@ class UsedDataRateViewController: UIViewController {
         
         usedDataRateImageView.addSubview(waveLoadingIndicator)
         waveLoadingIndicator.frame = usedDataRateImageView.bounds
-        waveLoadingIndicator.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        waveLoadingIndicator.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         
         usedData = BonUserDefaults.usedData
         balance = BonUserDefaults.balance

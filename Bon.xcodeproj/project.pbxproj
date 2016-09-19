@@ -11,11 +11,11 @@
 		831CCAC51CC36AD100DEF69E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CCAC41CC36AD100DEF69E /* LoginViewController.swift */; };
 		831CCACA1CC36AD100DEF69E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 831CCAC91CC36AD100DEF69E /* Assets.xcassets */; };
 		831CCACD1CC36AD100DEF69E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 831CCACB1CC36AD100DEF69E /* LaunchScreen.storyboard */; };
-		831CCAD61CC36E4200DEF69E /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831CCAD41CC36E4200DEF69E /* Alamofire.framework */; };
 		831CCADB1CC36F0B00DEF69E /* BIT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831CCADA1CC36F0B00DEF69E /* BIT.swift */; };
-		8337B9D01D03F10300173E44 /* Fuzi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8337B9CF1D03F10300173E44 /* Fuzi.framework */; };
+		832E07AA1D8FB8D100879778 /* Fuzi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 832E07A91D8FB8D100879778 /* Fuzi.framework */; };
+		832E07AD1D8FB8F300879778 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 832E07AB1D8FB8F300879778 /* AlamofireImage.framework */; };
+		832E07AE1D8FB8F300879778 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 832E07AC1D8FB8F300879778 /* Alamofire.framework */; };
 		8337B9D61D04246900173E44 /* SelfServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8337B9D51D04246900173E44 /* SelfServiceViewController.swift */; };
-		8337B9D91D042BA500173E44 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8337B9D81D042BA500173E44 /* AlamofireImage.framework */; };
 		834783801CDE2A03001FE820 /* Double+Bon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8347837F1CDE2A03001FE820 /* Double+Bon.swift */; };
 		836276381CC627380010D34B /* UsedDataRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836276371CC627380010D34B /* UsedDataRateViewController.swift */; };
 		8362763C1CC62CF40010D34B /* WaveLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 836276391CC62CF40010D34B /* WaveLoadingIndicator.swift */; };
@@ -47,11 +47,14 @@
 		831CCAC91CC36AD100DEF69E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		831CCACC1CC36AD100DEF69E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		831CCACE1CC36AD100DEF69E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		831CCAD41CC36E4200DEF69E /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		831CCADA1CC36F0B00DEF69E /* BIT.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BIT.swift; sourceTree = "<group>"; };
-		8337B9CF1D03F10300173E44 /* Fuzi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fuzi.framework; path = Carthage/Build/iOS/Fuzi.framework; sourceTree = "<group>"; };
+		832E07A11D8FB8A400879778 /* Fuzi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fuzi.framework; path = Carthage/Build/iOS/Fuzi.framework; sourceTree = "<group>"; };
+		832E07A21D8FB8A400879778 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		832E07A31D8FB8A400879778 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		832E07A91D8FB8D100879778 /* Fuzi.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Fuzi.framework; path = Carthage/Build/iOS/Fuzi.framework; sourceTree = "<group>"; };
+		832E07AB1D8FB8F300879778 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		832E07AC1D8FB8F300879778 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		8337B9D51D04246900173E44 /* SelfServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfServiceViewController.swift; sourceTree = "<group>"; };
-		8337B9D81D042BA500173E44 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		8347837F1CDE2A03001FE820 /* Double+Bon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Bon.swift"; sourceTree = "<group>"; };
 		836276371CC627380010D34B /* UsedDataRateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsedDataRateViewController.swift; sourceTree = "<group>"; };
 		836276391CC62CF40010D34B /* WaveLoadingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveLoadingIndicator.swift; sourceTree = "<group>"; };
@@ -81,9 +84,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8337B9D91D042BA500173E44 /* AlamofireImage.framework in Frameworks */,
-				8337B9D01D03F10300173E44 /* Fuzi.framework in Frameworks */,
-				831CCAD61CC36E4200DEF69E /* Alamofire.framework in Frameworks */,
+				832E07AA1D8FB8D100879778 /* Fuzi.framework in Frameworks */,
+				832E07AE1D8FB8F300879778 /* Alamofire.framework in Frameworks */,
+				832E07AD1D8FB8F300879778 /* AlamofireImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,9 +96,9 @@
 		831CCAB61CC36AD100DEF69E = {
 			isa = PBXGroup;
 			children = (
-				8337B9D81D042BA500173E44 /* AlamofireImage.framework */,
 				831CCAC11CC36AD100DEF69E /* Bon */,
 				831CCAC01CC36AD100DEF69E /* Products */,
+				832E07A01D8FB8A300879778 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,11 +130,22 @@
 		831CCAD91CC36EC800DEF69E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8337B9CF1D03F10300173E44 /* Fuzi.framework */,
-				831CCAD41CC36E4200DEF69E /* Alamofire.framework */,
+				832E07A91D8FB8D100879778 /* Fuzi.framework */,
+				832E07AC1D8FB8F300879778 /* Alamofire.framework */,
+				832E07AB1D8FB8F300879778 /* AlamofireImage.framework */,
 			);
 			name = Frameworks;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		832E07A01D8FB8A300879778 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				832E07A11D8FB8A400879778 /* Fuzi.framework */,
+				832E07A21D8FB8A400879778 /* AlamofireImage.framework */,
+				832E07A31D8FB8A400879778 /* Alamofire.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		83347F2A1CD5CEB800A020E2 /* Views */ = {
@@ -318,12 +332,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Chris;
 				TargetAttributes = {
 					831CCABE1CC36AD100DEF69E = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = RP63UHZLK9;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.Keychain = {
 								enabled = 0;
@@ -443,8 +458,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -490,8 +507,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -511,6 +530,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -520,6 +540,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -528,6 +549,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chriskuei.BIT.Bon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -535,6 +557,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -543,6 +566,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chriskuei.BIT.Bon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

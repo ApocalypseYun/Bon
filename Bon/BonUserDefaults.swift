@@ -49,7 +49,7 @@ let secondsKey = "seconds"
 
 class BonUserDefaults {
     
-    static let defaults = NSUserDefaults.standardUserDefaults()
+    static let defaults = UserDefaults.standard
     
     static var isLogined: Bool {
         if loginState == LoginState.ONLINE.description {
@@ -59,7 +59,7 @@ class BonUserDefaults {
         }
     }
     
-    class func saveUserDefaults(username: String, password: String, uid: String) {
+    class func saveUserDefaults(_ username: String, password: String, uid: String) {
         
         defaults.setValue(username, forKey: usernameKey)
         defaults.setValue(password, forKey: passwordKey)
@@ -70,14 +70,14 @@ class BonUserDefaults {
     
     class func cleanAllUserDefaults() {
         
-        defaults.removeObjectForKey(usernameKey)
-        defaults.removeObjectForKey(passwordKey)
+        defaults.removeObject(forKey: usernameKey)
+        defaults.removeObject(forKey: passwordKey)
         
         defaults.synchronize()
     }
     
     static var username: String = {
-        let savedUsername = defaults.stringForKey(usernameKey)
+        let savedUsername = defaults.string(forKey: usernameKey)
         if let username = savedUsername {
             return username
         } else {
@@ -91,7 +91,7 @@ class BonUserDefaults {
     }
     
     static var password: String = {
-        let savedPassword = defaults.stringForKey(passwordKey)
+        let savedPassword = defaults.string(forKey: passwordKey)
         if let password = savedPassword {
             return password
         } else {
@@ -105,7 +105,7 @@ class BonUserDefaults {
     }
     
     static var loginState: String = {
-        let savedLoginState = defaults.stringForKey(loginStateKey)
+        let savedLoginState = defaults.string(forKey: loginStateKey)
         if let loginState = savedLoginState {
             return loginState
         } else {
@@ -119,7 +119,7 @@ class BonUserDefaults {
     }
     
     static var balance: Double = {
-        let balance = defaults.doubleForKey(balanceKey)
+        let balance = defaults.double(forKey: balanceKey)
         return balance
         }() {
         didSet {
@@ -129,7 +129,7 @@ class BonUserDefaults {
     }
         
     static var IP: String = {
-        let savedUserIP = defaults.stringForKey(IPKey)
+        let savedUserIP = defaults.string(forKey: IPKey)
         if let userIP = savedUserIP {
             return userIP
         }
@@ -142,21 +142,21 @@ class BonUserDefaults {
     }
     
     static var seconds: Int = {
-        let seconds = defaults.integerForKey(secondsKey)
+        let seconds = defaults.integer(forKey: secondsKey)
         return seconds
         }() {
         didSet {
-            defaults.setInteger(seconds, forKey: secondsKey)
+            defaults.set(seconds, forKey: secondsKey)
             defaults.synchronize()
         }
     }
     
     static var usedData: Double = {
-        let usedData = defaults.doubleForKey(usedDataKey)
+        let usedData = defaults.double(forKey: usedDataKey)
         return usedData
         }() {
         didSet {
-            defaults.setDouble(usedData, forKey: usedDataKey)
+            defaults.set(usedData, forKey: usedDataKey)
             defaults.synchronize()
         }
     }

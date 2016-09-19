@@ -27,11 +27,11 @@ struct BonRegex {
     
     init(_ pattern: String) throws {
         try regex = NSRegularExpression(pattern: pattern,
-                                        options: .CaseInsensitive)
+                                        options: .caseInsensitive)
     }
     
-    func match(input: String) -> Bool {
-        let matches = regex.matchesInString(input,
+    func match(_ input: String) -> Bool {
+        let matches = regex.matches(in: input,
                                             options: [],
                                             range: NSMakeRange(0, input.characters.count))
         return matches.count > 0

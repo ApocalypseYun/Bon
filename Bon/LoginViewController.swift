@@ -42,8 +42,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loginButton.setTitleColor(UIColor.bonTintColor(), forState: .Highlighted)
-        loginButton.setTitleColor(UIColor.bonTintColor(), forState: .Selected)
+        loginButton.setTitleColor(UIColor.bonTintColor(), for: .highlighted)
+        loginButton.setTitleColor(UIColor.bonTintColor(), for: .selected)
         
         username = BonUserDefaults.username
         password = BonUserDefaults.password
@@ -58,22 +58,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         self.view.layoutIfNeeded()
         
-        UIView.animateWithDuration(0.5) {
+        UIView.animate(withDuration: 0.5, animations: {
             self.loginContentViewCenterY.constant = -100
             self.logoutButtonTop.constant = 50
             self.view.layoutIfNeeded()
-        }
+        }) 
     }
     
     func moveBackLoginContentViews() {
         
         self.view.layoutIfNeeded()
         
-        UIView.animateWithDuration(0.5) {
+        UIView.animate(withDuration: 0.5, animations: {
             self.loginContentViewCenterY.constant = 0
             self.logoutButtonTop.constant = 127
             self.view.layoutIfNeeded()
-        }
+        }) 
     }
     
     
@@ -88,18 +88,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - UITextFieldDelegate
     
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if usernameTextField.text != "" && passwordTextField.text != "" {
-            loginButton.enabled = true
+            loginButton.isEnabled = true
         } else {
-            loginButton.enabled = false
+            loginButton.isEnabled = false
         }
         
         return true
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         textField.resignFirstResponder()
         
@@ -108,29 +108,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Actions
     
-    @IBAction func onUsernameTextField(sender: AnyObject) {
+    @IBAction func onUsernameTextField(_ sender: AnyObject) {
         moveLoginContentViews()
         
     }
     
-    @IBAction func onPasswordTextField(sender: AnyObject) {
+    @IBAction func onPasswordTextField(_ sender: AnyObject) {
         moveLoginContentViews()
     }
     
-    @IBAction func endEditing(sender: AnyObject) {
+    @IBAction func endEditing(_ sender: AnyObject) {
         view.endEditing(true)
         moveBackLoginContentViews()
     }
     
-    @IBAction func onLoginButton(sender: AnyObject) {
+    @IBAction func onLoginButton(_ sender: AnyObject) {
         loadingView.startAnimating()
-        loginButton.selected = true
+        loginButton.isSelected = true
         //loginButton.tintColor = UIColor.bonTintColor()
         
         self.login()
     }
     
-    @IBAction func onLogoutButton(sender: AnyObject) {
+    @IBAction func onLogoutButton(_ sender: AnyObject) {
         whiteActivityIndicator.startAnimating()
         
         //saveUserInput()
@@ -141,10 +141,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
     }
     
-    @IBAction func onHelpCenterButton(sender: AnyObject) {
-        let url : NSURL = NSURL(string: BIT.URL.SelfService)!
-        if UIApplication.sharedApplication().canOpenURL(url) {
-            UIApplication.sharedApplication().openURL(url)
+    @IBAction func onHelpCenterButton(_ sender: AnyObject) {
+        let url : URL = URL(string: BIT.URL.SelfService)!
+        if UIApplication.shared.canOpenURL(url) {
+            UIApplication.shared.openURL(url)
         }
     }
     
@@ -156,7 +156,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Navigation
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "Login" {
         }
         
@@ -184,22 +184,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         BonNetwork.post(parameters, success: { (value) in
             print(value)
-            if value.containsString("login_ok,") {
+            if value.contains("login_ok,") {
                 delay(1) {
                     self.getOnlineInfo()
                     self.loadingView.stopAnimating()
-                    self.loginButton.selected = false
-                    self.performSegueWithIdentifier("Login", sender: self)
+                    self.loginButton.isSelected = false
+                    self.performSegue(withIdentifier: "Login", sender: self)
                 }
             } else {
                 self.loadingView.stopAnimating()
-                self.loginButton.selected = false
+                self.loginButton.isSelected = false
                 BonAlert.alertSorry(message: "Login error", inViewController: self)
                 // E2616: Arrearage users.(已欠费)
             }
             }) { (error) in
                 self.loadingView.stopAnimating()
-                self.loginButton.selected = false
+                self.loginButton.isSelected = false
                 BonAlert.alertSorry(message: "The request timed out.", inViewController: self)
         }
     }
@@ -250,7 +250,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         BonNetwork.post(parameters) { (value) in
             print(value)
-            let info = value.componentsSeparatedByString(",")
+            let info = value.components(separatedBy: ",")
             
             let usedData = Double(info[0])!
             BonUserDefaults.usedData = usedData

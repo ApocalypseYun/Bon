@@ -13,7 +13,7 @@ extension UILabel {
     var substituteFontName : String {
         get { return self.font.fontName }
         set {
-            if self.font.fontName.rangeOfString("Medium") == nil {
+            if self.font.fontName.range(of: "Medium") == nil {
                 self.font = UIFont(name: newValue, size: self.font.pointSize)
             }
         }
@@ -22,7 +22,7 @@ extension UILabel {
     var substituteFontNameBold : String {
         get { return self.font.fontName }
         set {
-            if self.font.fontName.rangeOfString("Medium") != nil {
+            if self.font.fontName.range(of: "Medium") != nil {
                 self.font = UIFont(name: newValue, size: self.font.pointSize)
             }
         }
